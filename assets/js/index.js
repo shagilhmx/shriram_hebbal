@@ -133,15 +133,16 @@ window.addEventListener(
   "load",
   (event) => {
     const clickers = document.querySelectorAll(".clicker");
+
     clickers.forEach((clicker) => {
       clicker.addEventListener("click", () => {
         if (clicker.classList.contains("open")) {
           clicker.classList.remove("open");
           clicker.querySelector(".containerDivMain").slideUp(400);
         } else {
-          clickers.forEach((c) => {
-            c.querySelector(".containerDivMain").slideUp(400);
-            c.classList.remove("open");
+          clickers.forEach((clicker) => {
+            clicker.querySelector(".containerDivMain").slideUp(400);
+            clicker.classList.remove("open");
           });
           clicker.classList.add("open");
           clicker.querySelector(".containerDivMain").slideDown(400);
@@ -270,6 +271,10 @@ window.addEventListener(
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
+      const script = document.createElement("script");
+      script.src =
+        "https://unpkg.com/@dotlottie/player-component@1.0.0/dist/dotlottie-player.js";
+      document.body.appendChild(script);
       animation = document.getElementById("desktop");
       animation1 = document.getElementById("mobile");
       if (entry?.isIntersecting) {
