@@ -8,6 +8,10 @@
       href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900|Ubuntu:400,500,700&display=swap"
       rel="stylesheet"
     />
+    <script
+      defer
+      src="https://unpkg.com/@dotlottie/player-component@1.0.0/dist/dotlottie-player.js"
+    ></script>
     <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
       defer
@@ -17,6 +21,7 @@
       href="https://fonts.googleapis.com/css?family=Arvo&display=swap"
       rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <meta http-equiv="Cache-Control" content="max-age=31536000, public" />
     <link
       rel="icon"
@@ -292,7 +297,7 @@
     <div class="section2">
       <div class="circular">
         <p>Land Area:</p>
-        <p id="count1">2.5 Acres</p>
+        <p id="count1">1.8 Acres</p>
       </div>
       <div class="circular main">
         <p>Configuration:</p>
@@ -1116,9 +1121,169 @@
                   width="auto"
                 />
               </div>
-              <div class="containerDivMain" id="five">
+              <div class="containerDivMain" id="six">
                 <div class="eachItems">
                   <p>There is 3% charge on any sale or transfer.</p>
+                </div>
+              </div>
+            </div>
+            <div class="containerDiv clicker" onclick="excute('six')">
+              <div class="containerDivHeader">
+                <p>
+                  Why are you paying Rs. 88 PSF now and reducing to Rs. 72 PSF
+                  post OC.
+                </p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="sixIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="six">
+                <div class="eachItems">
+                  <p>
+                    Rs. 88 PSF is the interest we are paying during construction
+                    and not rental. In addition, finished asset is more valuable
+                    and less risky than under-construction and hence we are
+                    paying Rs. 72 PSF.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="containerDiv clicker" onclick="excute('seven')">
+              <div class="containerDivHeader">
+                <p>
+                  When market rental is Rs. 97 PSF, why are you paying Rs. 72
+                  PSF after Occupancy Certificate (OC)?
+                </p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="sevenIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="seven">
+                <div class="eachItems">
+                  <p>
+                    Shriram Properties is guaranteeing the rental for 3 years
+                    irrespective of whether the Commercial Building is leased or
+                    not and hence we have been conservation in our rental
+                    guarantee.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="containerDiv clicker" onclick="excute('eight')">
+              <div class="containerDivHeader">
+                <p>What is the Maintenance post Occupancy Certificate?</p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="eightIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="eight">
+                <div class="eachItems">
+                  <p>
+                    For first 3.5 years after OC there is no Maintenance Cost as
+                    Shriram Properties is guaranteeing Rental and Maintenance.
+                    Post 5.5 years or so from now, Maintenance is typically paid
+                    by the tenant. So, we don’t expect investors to pay
+                    maintenance. That said, if property is not leased after 5.5
+                    years then maintenance could be Rs. 5 to Rs. 7 PSF per month
+                    but subject to change as per market conditions.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="containerDiv clicker" onclick="excute('nine')">
+              <div class="containerDivHeader">
+                <p>Can I sell or exit anytime?</p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="nineIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="nine">
+                <div class="eachItems">
+                  <p>
+                    Once you have paid full 100% you can exit anytime at then
+                    prevailing market price. There is 3% transfer fee on Sale
+                    Value.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="containerDiv clicker" onclick="excute('ten')">
+              <div class="containerDivHeader">
+                <p>Type of ownership?</p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="tenIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="ten">
+                <div class="eachItems">
+                  <p>
+                    This is a Agreement of Sale leading to Sale Deed post OC. So
+                    you will have sale deed and katha in your name – you will be
+                    absolute owner of our area. Please note this purchase is for
+                    Un-demarcated and un-divided share (UDS) of land wherein you
+                    can enjoy rental benefits of a Grade A commercial property
+                    without hassle of maintenance and finding blue chip tenants.
+                  </p>
                 </div>
               </div>
             </div>

@@ -132,22 +132,16 @@ window.addEventListener(
 window.addEventListener(
   "load",
   (event) => {
-    const clickers = document.querySelectorAll(".clicker");
-
-    clickers.forEach((clicker) => {
-      clicker.addEventListener("click", () => {
-        if (clicker.classList.contains("open")) {
-          clicker.classList.remove("open");
-          clicker.querySelector(".containerDivMain").slideUp(400);
-        } else {
-          clickers.forEach((clicker) => {
-            clicker.querySelector(".containerDivMain").slideUp(400);
-            clicker.classList.remove("open");
-          });
-          clicker.classList.add("open");
-          clicker.querySelector(".containerDivMain").slideDown(400);
-        }
-      });
+    $(".clicker").click(function () {
+      if ($(this).hasClass("open")) {
+        $(this).removeClass("open");
+        $(this).find(".containerDivMain").slideUp(400);
+      } else {
+        $(".clicker").find(".containerDivMain").slideUp(400);
+        $(".clicker").removeClass("open");
+        $(this).addClass("open");
+        $(this).find(".containerDivMain").slideDown(400);
+      }
     });
   },
   false,
@@ -271,10 +265,6 @@ window.addEventListener(
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      const script = document.createElement("script");
-      script.src =
-        "https://unpkg.com/@dotlottie/player-component@1.0.0/dist/dotlottie-player.js";
-      document.body.appendChild(script);
       animation = document.getElementById("desktop");
       animation1 = document.getElementById("mobile");
       if (entry?.isIntersecting) {
@@ -292,10 +282,10 @@ const observer = new IntersectionObserver(
 );
 
 function load() {
-  animateValue("count1", 2.5, true);
+  animateValue("count1", 1.8, true);
   animateValue("count2", 511, false);
   animateValue("count3", 267273, false);
-  animateValue("count4", 2.5, true);
+  animateValue("count4", 1.8, true);
   animateValue("count5", 511, false);
   animateValue("count6", 267273, false);
 }
