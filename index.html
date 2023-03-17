@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script defer src="assets/js/index.js"></script>
+    <link rel="stylesheet" href="assets/Css/global.css" />
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900|Ubuntu:400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://unpkg.com/@dotlottie/player-component@1.0.0/dist/dotlottie-player.js"
+    ></script>
+    <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      defer
+      src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Arvo&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="Cache-Control" content="max-age=31536000, public" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://shriramproperties.com/sites/default/files/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.19/css/intlTelInput.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script
+      defer
+      src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.19/js/intlTelInput.min.js"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shriram Hebbal 1 - Shriram Properties</title>
+    <meta
+      name="description"
+      content="Shriram Hebbal One, a new commercial project from Shriram Group, is now available in Hebbal, located in northern Bangalore."
+    />
+    <meta property="og:title" content="Shriram Hebbal 1 - Shriram Properties" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.shriramhebbalone.com/" />
+    <meta
+      property="og:image"
+      content="https://www.shriramhebbalone.com/share.jpg"
+    />
+    <meta
+      property="og:description"
+      content="Shriram Hebbal One, a new commercial project from Shriram Group, is now available in Hebbal, located in northern Bangalore."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Shriram Hebbal 1 - Shriram Properties"
+    />
+    <meta
+      name="twitter:description"
+      content="Shriram Hebbal One, a new commercial project from Shriram Group, is now available in Hebbal, located in northern Bangalore."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.shriramhebbalone.com/share.jpg"
+    />
+  </head>
+  <body>
+    <!-- nav bar -->
+    <div class="modal" id="modal">
+      <img
+        class="closeIcon"
+        src="assets/images/modalIcons/closeIcon.svg"
+        onclick="closeModal()"
+        alt="closeIcon"
+        loading="lazy"
+        height="auto"
+        width="auto"
+      />
+      <div class="modalContainer">
+        <div class="modalHeader">
+          <img
+            src="assets/images/navbarIcons/developerIcon.svg"
+            class="navImg"
+            alt="developerIcon"
+            loading="lazy"
+            height="auto"
+            width="auto"
+          />
+          <img
+            src="assets/images/navbarIcons/propertyIcon.svg"
+            class="navImg"
+            alt="propertyIcon"
+            loading="lazy"
+            height="auto"
+            width="auto"
+          />
+        </div>
+        <form class="modalMain enquirySubMain" onsubmit="return false">
+          <div class="section5Header">
+            <img
+              src="assets/images/hashIcon.webp"
+              class="hashIcon"
+              alt="hashIcon"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+            <p class="headerText">
+              <span>BOOK </span> <span>YOUR SLOT NOW</span>
+            </p>
+          </div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            id="Name"
+            required
+            class="input"
+          />
+          <input
+            type="tel"
+            onclick="this.setSelectionRange(0, this.value.length)"
+            name="phone"
+            id="phoneNumber"
+            placeholder="Mobile Number"
+            maxlength="10"
+            required
+            class="inputPhone"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            id="Email"
+            required
+            class="input"
+          />
+          <div class="boxWrapper">
+            <div class="checkboxWrapper">
+              <input type="checkbox" checked="checked" title="checkbox" />
+              <span class="checkmark"></span>
+              <p class="readLess" id="read">
+                <span>I hearby declare that I have read the consent...</span
+                ><span id="readLess" onclick="readMore()">Read More</span>
+              </p>
+              <div>
+                <p class="readMore" id="displayMore">
+                  I hereby declare that I have read the consent. and I appoint
+                  and allow FINCITY to access my credit information from Credit
+                  Information Companies in order to understand my credit
+                  worthiness and thereinafter provide personalised values which
+                  would help them generate the Credit Information Report, Credit
+                  Score and Credit Analysis. I/We hereby authorize FINCITY & its
+                  affiliates including banking partners to call or SMS and/or
+                  WhatsApp with reference to my application or in relation to
+                  any of FINCITY products, notwithstanding anything to the
+                  contrary that may be contained anywhere, including any
+                  registration for DNC/ NDNC.
+                </p>
+                <span id="readLess2" onclick="readLess2()">Read Less</span>
+              </div>
+            </div>
+          </div>
+          <button
+            class="enquirBbutton"
+            id="enquirBbutton1"
+            type="submit"
+            onclick="openApi(event)"
+          >
+            Get More Information
+          </button>
+          <div id="error"></div>
+        </form>
+      </div>
+    </div>
+    <div class="navbar" id="navbar">
+      <div class="navbarDiv">
+        <div class="propertyDeveloper">
+          <img
+            src="assets/images/navbarIcons/developerIcon.svg"
+            class="navImg"
+            alt="developerIcon"
+            loading="lazy"
+            height="auto"
+            width="auto"
+          />
+          <img
+            src="assets/images/navbarIcons/propertyIcon.svg"
+            class="navImg"
+            alt="propertyIcon"
+            loading="lazy"
+            height="auto"
+            width="auto"
+          />
+        </div>
+        <div class="buttonFincityDiv">
+          <div class="buttonDiv">
+            <div class="navbarButton call">
+              <a href="tel:+9195138-80551"
+                ><img
+                  src="assets/images/navbarIcons/callIcon.svg"
+                  alt="callIcon"
+                  href="tel:+9195138-80551"
+                  loading="lazy"
+                  height="auto"
+                  width="auto"
+                />
+                <span class="phoneNo">95138-80551</span>
+              </a>
+            </div>
+          </div>
+          <div class="fincityIconClass">
+            <img
+              class="invenstmentIcon"
+              src="assets/images/navbarIcons/investemnetIcon.svg"
+              alt="invenstmentIcon"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+            <img
+              class="navImg"
+              alt="navImg"
+              src="assets/images/navbarIcons/fincityIcon.svg"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- section 1 -->
+    <div class="section1" style="background-image: var(--main-image)">
+      <div class="leftSection">
+        <div class="rentalBoxMobile">PRM/KA/RERA/1251/309/PR/150223/005722</div>
+        <div class="leftSection_main">
+          <p class="betterBusiness">Better Business</p>
+          <p class="happensHere">heppens here.</p>
+        </div>
+        <div class="secton1_innerdiv">
+          <img
+            src="assets/images/navbarIcons/propertyIcon.svg"
+            class="propertyDeveloper"
+            loading="lazy"
+            alt="propertyDeveloper"
+            height="auto"
+            width="auto"
+          />
+          <div class="innerDiv_div2">
+            <img
+              src="assets/images/section1/rentalIncome.svg"
+              alt="rentalText"
+              class="rentalText"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="rightSection">
+        <div class="rentalBox">PRM/KA/RERA/1251/309/PR/150223/005722</div>
+      </div>
+      <div class="rightSectionMobile">
+        <div class="secton1_innerdiv" data-aos="zoom-in">
+          <div class="innerDiv_div2">
+            <img
+              src="assets/images/navbarIcons/developerIcon.svg"
+              alt="rentalText"
+              class="rentalText"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+          </div>
+        </div>
+        <div class="secton2_innerdiv" data-aos="zoom-in">
+          <div class="innerDiv_div2">
+            <img
+              src="assets/images/section1/rentalIncome.svg"
+              alt="rentalText"
+              class="rentalText"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- section 2 -->
+    <div class="section2">
+      <div class="circular">
+        <p>Land Area:</p>
+        <p id="count1">2.5 Acres</p>
+      </div>
+      <div class="circular main">
+        <p>Configuration:</p>
+        <p>2B+G+8 Floors</p>
+      </div>
+      <div class="circular">
+        <p>Total Saleable Area:</p>
+        <p id="count3">2,67,273 sq.ft.</p>
+      </div>
+      <div class="circular main">
+        <p>Total Car Parks:</p>
+        <p id="count2">511</p>
+      </div>
+    </div>
+    <div class="section2Mobile">
+      <div class="circular">
+        <p>Land Area:</p>
+        <p id="count4">2.5 Acres</p>
+      </div>
+      <div class="circular main">
+        <p>Configuration:</p>
+        <p>2B+G+8 Floors</p>
+      </div>
+      <div class="circular main">
+        <p>Total Car Parks:</p>
+        <p id="count6">511</p>
+      </div>
+      <div class="circular">
+        <p>Total Saleable Area:</p>
+        <p id="count5">2,67,273 sq.ft.</p>
+      </div>
+    </div>
+    <!-- section 3 -->
+    <div class="section3">
+      <img
+        src="assets/images/section3/backgroundCircle.webp"
+        class="section3Image"
+        alt="circle"
+        loading="lazy"
+        height="auto"
+        width="auto"
+      />
+      <div class="section5Header">
+        <img
+          src="assets/images/hashIcon.webp"
+          class="hashIcon"
+          alt="hashIcon"
+          loading="lazy"
+          height="auto"
+          width="auto"
+        />
+        <p class="headerText">
+          <span>PRIME LOCATION</span> - <span>MAIN ROAD PROPERTY</span>
+        </p>
+      </div>
+      <div class="mainDiv3Mobile">
+        <div class="divOne">
+          <div class="itemone" data-aos="fade-right">
+            <div class="section5Header">
+              <img
+                src="assets/images/hashIcon.webp"
+                class="hashIcon"
+                alt="hashIcon"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              />
+              <p class="headerText">
+                <span>METRO</span> <span>CONNECTIVITY</span>
+              </p>
+            </div>
+            <img
+              src="assets/images/section3/businessMap.webp"
+              alt="map"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+            <div class="mainText">
+              <div class="divOneText">
+                <p class="section3Text">Kempapura</p>
+                <div class="divOneText1">
+                  <p class="section3Text">0.0 Kms</p>
+                  <p class="section3Text">1 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Hebbal</p>
+                <div class="divOneText1">
+                  <p class="section3Text">1.1 Kms</p>
+                  <p class="section3Text">3 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Veerannapalya</p>
+                <div class="divOneText1">
+                  <p class="section3Text">1.6 Kms</p>
+                  <p class="section3Text">3 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Nagawara</p>
+                <div class="divOneText1">
+                  <p class="section3Text">2.8 Kms</p>
+                  <p class="section3Text">5 Mins</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="itemtwo" data-aos="fade-left">
+            <div class="section5Header">
+              <img
+                src="assets/images/hashIcon.webp"
+                class="hashIcon"
+                alt="hashIcon"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              />
+              <p class="headerText"><span>BUSINESS</span> <span>HUB</span></p>
+            </div>
+            <img
+              src="assets/images/section3/hebbalMetro.webp"
+              alt="map"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+            <div class="mainText">
+              <div class="divOneText">
+                <p class="section3Text">Kirloskar</p>
+                <div class="divOneText1">
+                  <p class="section3Text">1.9 Kms</p>
+                  <p class="section3Text">4 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Manyata</p>
+                <div class="divOneText1">
+                  <p class="section3Text">5.5 Kms</p>
+                  <p class="section3Text">13 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Karle</p>
+                <div class="divOneText1">
+                  <p class="section3Text">4.0 Kms</p>
+                  <p class="section3Text">9 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">L & T</p>
+                <div class="divOneText1">
+                  <p class="section3Text">5.8 Kms</p>
+                  <p class="section3Text">14 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Phoenix mall</p>
+                <div class="divOneText1">
+                  <p class="section3Text">5.5 Kms</p>
+                  <p class="section3Text">13 Mins</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="divTwo">
+          <div class="itemone" data-aos="fade-up">
+            <div class="section5Header">
+              <img
+                src="assets/images/hashIcon.webp"
+                class="hashIcon"
+                alt="hashIcon"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              />
+              <p class="headerText"><span>MARKET</span> <span>GROWTH</span></p>
+            </div>
+            <div class="itemoneDiv">
+              <div class="itemoneDivHeader">
+                <img
+                  src="assets/images/section3/residentail.webp"
+                  alt="residentail"
+                  loading="lazy"
+                  height="auto"
+                  width="auto"
+                />
+                <span>RESIDENTIAL DEVELOPMENTS</span>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>Residential Inventory</p>
+                <p>Upcoming Supply</p>
+              </div>
+              <div class="itemoneDivMain">
+                <p>H1 2022</p>
+                <p>2022-2027</p>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>40,000 units</p>
+                <p>25,000 units</p>
+              </div>
+            </div>
+            <div
+              class="itemoneDiv mid"
+              style="background-image: linear-gradient(90deg, #e69117, #bd411b)"
+            >
+              <div class="itemoneDivHeader">
+                <img
+                  src="assets/images/section3/commercial.webp"
+                  alt="commercial"
+                  loading="lazy"
+                  height="auto"
+                  width="auto"
+                />
+                <span>COMMERCIAL DEVELOPMENTS</span>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>Office Stock</p>
+                <p>Upcoming Supply</p>
+              </div>
+              <div class="itemoneDivMain">
+                <p>H1 2022</p>
+                <p>2022-2026</p>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>18.6 MSF</p>
+                <p>3.3 MSF</p>
+              </div>
+            </div>
+            <div class="itemoneDiv">
+              <div class="itemoneDivHeader">
+                <img
+                  src="assets/images/section3/retail.webp"
+                  alt="rental"
+                  loading="lazy"
+                  height="auto"
+                  width="auto"
+                />
+                <span>RENTAL DEVELOPMENTS</span>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>Mail Inventory</p>
+                <p>Upcoming Supply</p>
+              </div>
+              <div class="itemoneDivMain">
+                <p>H1 2022</p>
+                <p>2027</p>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>1.74 MSF</p>
+                <p>1.2 MSF</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mainDiv3">
+        <div class="divOne">
+          <div class="itemone" data-aos="fade-right">
+            <div class="section5Header">
+              <img
+                src="assets/images/hashIcon.webp"
+                class="hashIcon"
+                alt="hashIcon"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              />
+              <p class="headerText">
+                <span>METRO</span> <span>CONNECTIVITY</span>
+              </p>
+            </div>
+            <img
+              src="assets/images/section3/businessMap.webp"
+              alt="map"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+            <div class="mainText">
+              <div class="divOneText">
+                <p class="section3Text">Kempapura</p>
+                <div class="divOneText1">
+                  <p class="section3Text">0.0 Kms</p>
+                  <p class="section3Text">1 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Hebbal</p>
+                <div class="divOneText1">
+                  <p class="section3Text">1.1 Kms</p>
+                  <p class="section3Text">3 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Veerannapalya</p>
+                <div class="divOneText1">
+                  <p class="section3Text">1.6 Kms</p>
+                  <p class="section3Text">3 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Nagawara</p>
+                <div class="divOneText1">
+                  <p class="section3Text">2.8 Kms</p>
+                  <p class="section3Text">5 Mins</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="itemtwo" data-aos="fade-up">
+            <div class="section5Header">
+              <img
+                src="assets/images/hashIcon.webp"
+                class="hashIcon"
+                alt="hashIcon"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              />
+              <p class="headerText"><span>MARKET</span> <span>GROWTH</span></p>
+            </div>
+            <div class="itemoneDiv">
+              <div class="itemoneDivHeader">
+                <img
+                  src="assets/images/section3/residentail.webp"
+                  alt="residentail"
+                  loading="lazy"
+                  height="auto"
+                  width="auto"
+                />
+                <span>RESIDENTIAL DEVELOPMENTS</span>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>Residential Inventory</p>
+                <p>Upcoming Supply</p>
+              </div>
+              <div class="itemoneDivMain">
+                <p>H1 2022</p>
+                <p>2022-2027</p>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>40,000 units</p>
+                <p>25,000 units</p>
+              </div>
+            </div>
+            <div
+              class="itemoneDiv mid"
+              style="background-image: linear-gradient(90deg, #e69117, #bd411b)"
+            >
+              <div class="itemoneDivHeader">
+                <img
+                  src="assets/images/section3/commercial.webp"
+                  alt="commercial"
+                  loading="lazy"
+                  height="auto"
+                  width="auto"
+                />
+                <span>COMMERCIAL DEVELOPMENTS</span>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>Office Stock</p>
+                <p>Upcoming Supply</p>
+              </div>
+              <div class="itemoneDivMain">
+                <p>H1 2022</p>
+                <p>2022-2026</p>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>18.6 MSF</p>
+                <p>3.3 MSF</p>
+              </div>
+            </div>
+            <div class="itemoneDiv">
+              <div class="itemoneDivHeader">
+                <img
+                  src="assets/images/section3/retail.webp"
+                  alt="rental"
+                  loading="lazy"
+                  height="auto"
+                  width="auto"
+                />
+                <span>RENTAL DEVELOPMENTS</span>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>Mail Inventory</p>
+                <p>Upcoming Supply</p>
+              </div>
+              <div class="itemoneDivMain">
+                <p>H1 2022</p>
+                <p>2027</p>
+              </div>
+              <div class="itemoneDivMain strong">
+                <p>1.74 MSF</p>
+                <p>1.2 MSF</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="divTwo">
+          <div class="itemtwo" data-aos="fade-left">
+            <div class="section5Header">
+              <img
+                src="assets/images/hashIcon.webp"
+                class="hashIcon"
+                alt="hashIcon"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              />
+              <p class="headerText"><span>BUSINESS</span> <span>HUB</span></p>
+            </div>
+            <img
+              src="assets/images/section3/hebbalMetro.webp"
+              alt="map"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+            <div class="mainText">
+              <div class="divOneText">
+                <p class="section3Text">Kirloskar</p>
+                <div class="divOneText1">
+                  <p class="section3Text">1.9 Kms</p>
+                  <p class="section3Text">4 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Manyata</p>
+                <div class="divOneText1">
+                  <p class="section3Text">5.5 Kms</p>
+                  <p class="section3Text">13 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Karle</p>
+                <div class="divOneText1">
+                  <p class="section3Text">4.0 Kms</p>
+                  <p class="section3Text">9 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">L & T</p>
+                <div class="divOneText1">
+                  <p class="section3Text">5.8 Kms</p>
+                  <p class="section3Text">14 Mins</p>
+                </div>
+              </div>
+              <div class="divOneText">
+                <p class="section3Text">Phoenix mall</p>
+                <div class="divOneText1">
+                  <p class="section3Text">5.5 Kms</p>
+                  <p class="section3Text">13 Mins</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        data-aos="fade-up"
+        src="assets/images/section3/upperCicle.webp"
+        class="cicleIcon"
+        alt="upperCicle"
+        loading="lazy"
+        height="auto"
+        width="auto"
+      />
+      <img
+        data-aos="fade-up"
+        src="assets/images/section3/upperCicleMobile.webp"
+        class="cicleIconMobile"
+        alt="upperCicle"
+        loading="lazy"
+        height="auto"
+        width="auto"
+      />
+      <div class="divFourWrapper" data-aos="fade-left">
+        <div class="divFour">
+          <div class="section5Header">
+            <img
+              src="assets/images/hashIcon.webp"
+              class="hashIcon"
+              alt="hashIcon"
+              loading="lazy"
+              height="auto"
+              width="auto"
+            />
+            <p class="headerText"><span>5 YEAR PAYMENTS</span></p>
+          </div>
+          <div class="divFour_header">
+            <div class="sub_header"></div>
+            <div class="sub_header">
+              <p>PER SQ.FT.</p>
+              <p>500 SQ.FT.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column0">
+              <p>INTEREST PAYMENT PER MONTH</p>
+              <p>Until OC (Occupancy Certificate):</p>
+            </div>
+            <div class="column1">
+              <div
+                style="
+                  background-image: linear-gradient(90deg, #e69117, #bd411b);
+                "
+              >
+                Rs. 88
+              </div>
+              <div
+                style="
+                  background-image: linear-gradient(90deg, #e69117, #bd411b);
+                "
+              >
+                Rs. 44,000
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column0">
+              <p>RENTAL PER MONTH</p>
+              <p>Post OC for 3 years:</p>
+            </div>
+            <div class="column1">
+              <div
+                style="
+                  background-image: linear-gradient(90deg, #e69117, #bd411b);
+                "
+              >
+                Rs. 72 <span>*</span>
+              </div>
+              <div
+                style="
+                  background-image: linear-gradient(90deg, #e69117, #bd411b);
+                "
+              >
+                Rs. 36,000
+              </div>
+            </div>
+          </div>
+          <div class="hashTrix">
+            *Post OC 6 month fit out period is rent free for tenants as per
+            standard market practice.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- map section -->
+    <div class="mapSection">
+      <div class="section5Header">
+        <img
+          src="assets/images/hashIcon.webp"
+          class="hashIcon"
+          alt="hashIcon"
+          loading="lazy"
+          height="auto"
+          width="auto"
+        />
+        <p class="headerText"><span></span> <span>LOCATION</span></p>
+      </div>
+      <div class="mapBox">
+        <iframe
+          title="map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.868508345844!2d77.59778985058021!3d13.044040690763248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae178ddb5915e5%3A0x77e3474505378456!2sShriram%20Hebbal%20One!5e0!3m2!1sen!2sin!4v1678446821003!5m2!1sen!2sin"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+    <!-- section 4 -->
+    <div class="section4">
+      <div class="section5Header">
+        <img
+          src="assets/images/hashIcon.webp"
+          class="hashIcon"
+          alt="hashIcon"
+          loading="lazy"
+          height="auto"
+          width="auto"
+        />
+        <p class="headerText">
+          <span>RENTAL TRENDS</span> - <span>MICRO MARKET</span>
+        </p>
+      </div>
+      <div class="outer" id="outer">
+        <dotlottie-player
+          autoplay
+          mode="normal"
+          id="desktop"
+          src="assets/images/lottie1.lottie"
+        >
+        </dotlottie-player>
+      </div>
+      <div class="outer" id="outer1">
+        <dotlottie-player
+          autoplay
+          mode="normal"
+          id="mobile"
+          src="assets/images/lottieMobile1.lottie"
+        >
+        </dotlottie-player>
+      </div>
+    </div>
+    <!-- faq section -->
+    <div class="faqSection">
+      <div class="section5Header">
+        <img
+          src="assets/images/hashIcon.webp"
+          class="hashIcon"
+          alt="hashIcon"
+          loading="lazy"
+          height="auto"
+          width="auto"
+        />
+        <p class="headerText"><span></span> <span>HAVE MORE QUESTIONS</span></p>
+      </div>
+      <div class="faqMainContainer">
+        <div class="mainDiv5">
+          <div class="left">
+            <div class="clicker containerDiv" onclick="excute('one')">
+              <div class="containerDivHeader">
+                <p>What is the Undivided Share of Land (UDS) Percentage ?</p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="oneIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="one">
+                <div class="eachItems">
+                  <p>
+                    UDS for the area is 29.33%. Calculations are provided below:
+                  </p>
+                  <table>
+                    <tr>
+                      <th>Floor</th>
+                      <th>Total Area</th>
+                      <th>UDS</th>
+                      <th>UDS%</th>
+                    </tr>
+                    <tr>
+                      <td>4th</td>
+                      <td>30,265.73 sq. ft.</td>
+                      <td>8,878.84 sq. ft.</td>
+                      <td>29.33%</td>
+                    </tr>
+                    <tr>
+                      <td>5th</td>
+                      <td>30,265.73 sq. ft.</td>
+                      <td>8,878.84 sq. ft.</td>
+                      <td>29.33%</td>
+                    </tr>
+                    <tr>
+                      <td>6th</td>
+                      <td>30,265.73 sq. ft.</td>
+                      <td>8,878.84 sq. ft.</td>
+                      <td>29.33%</td>
+                    </tr>
+                    <tr>
+                      <td>7th</td>
+                      <td>30,265.73 sq. ft.</td>
+                      <td>8,878.84 sq. ft.</td>
+                      <td>29.33%</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="containerDiv clicker" onclick="excute('two')">
+              <div class="containerDivHeader">
+                <p>
+                  What all floors and respective areas are sold through this
+                  offering ?
+                </p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="twoIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="two">
+                <div class="eachItems">
+                  <p>
+                    Currently we are selling Shriram properties share of area on
+                    4th, 5th, 6th and 7th floor. Each floor allocation is as
+                    follows:
+                  </p>
+                  <table>
+                    <tr>
+                      <th>Floor</th>
+                      <th>Total Area</th>
+                      <th>Shriram Properties Share</th>
+                    </tr>
+                    <tr>
+                      <td>4th</td>
+                      <td>30,265.73 sq. ft.</td>
+                      <td>9,631 sq. ft.</td>
+                    </tr>
+                    <tr>
+                      <td>5th</td>
+                      <td>30,265.73 sq. ft.</td>
+                      <td>30,266 sq. ft.</td>
+                    </tr>
+                    <tr>
+                      <td>6th</td>
+                      <td>30,265.73 sq. ft.</td>
+                      <td>30,266 sq. ft.</td>
+                    </tr>
+                    <tr>
+                      <td>7th</td>
+                      <td>30,265.73 sq. ft.</td>
+                      <td>30,266 sq. ft.</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="containerDiv clicker" onclick="excute('three')">
+              <div class="containerDivHeader">
+                <p>
+                  Is the rental guaranteed even if space is vacant without
+                  tenants ?
+                </p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="threeIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="three">
+                <div class="eachItems">
+                  <p>
+                    Yes, Shriram properties is providing rental of Rs. 72 per
+                    sq. ft. after Occupancy Certificate (OC) and a 6 month
+                    fit-out period for a 3 year period.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="containerDiv clicker" onclick="excute('four')">
+              <div class="containerDivHeader">
+                <p>Is the land owned or Joint Development (JD) ?</p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="fourIcon"
+                  class="up"
+                  alt="up"
+                  height="auto"
+                  width="auto"
+                  src="assets/images/dropDownUp.svg"
+                />
+              </div>
+              <div class="containerDivMain" id="four">
+                <div class="eachItems">
+                  <p>This is a Joint development with landowners.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="containerDiv clicker" onclick="excute('five')">
+              <div class="containerDivHeader">
+                <p>
+                  Can the investment be transferred to any family member during
+                  the tenure ?
+                </p>
+                <img
+                  class="down"
+                  alt="down"
+                  src="assets/images/dropDown.svg"
+                  height="auto"
+                  width="auto"
+                />
+                <img
+                  id="fiveIcon"
+                  class="up"
+                  alt="up"
+                  src="assets/images/dropDownUp.svg"
+                  height="auto"
+                  width="auto"
+                />
+              </div>
+              <div class="containerDivMain" id="five">
+                <div class="eachItems">
+                  <p>There is 3% charge on any sale or transfer.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- section 5 -->
+    <div class="section5">
+      <div class="section5Header">
+        <img
+          src="assets/images/hashIcon.webp"
+          class="hashIcon"
+          alt="hashIcon"
+          loading="lazy"
+          height="auto"
+          width="auto"
+        />
+        <p class="headerText">
+          <span>PROJECT</span> <span>SPECIFICATIONS</span>
+        </p>
+      </div>
+      <div class="mainDiv5">
+        <div class="left">
+          <div class="containerDiv clicker" onclick="excute('one1')">
+            <div class="containerDivHeader">
+              <p>Centralised Air Conditioning</p>
+              <img
+                class="down"
+                alt="down"
+                src="assets/images/dropDown.svg"
+                height="auto"
+                width="auto"
+              />
+              <img
+                id="one1Icon"
+                alt="up"
+                class="up"
+                src="assets/images/dropDownUp.svg"
+                height="auto"
+                width="auto"
+              />
+            </div>
+            <div class="containerDivMain" id="one1">
+              <div class="eachItems">
+                <span>-</span>
+                <p>Dedicated AHU rooms provisioned in all floors</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>High-side AC provisioned for 1TR/300 Sq.ft.</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Space provisioned for clients to install DX units for their
+                  critical services
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="containerDiv clicker" onclick="excute('two2')">
+            <div class="containerDivHeader">
+              <p>Structural Design & Ambience</p>
+              <img
+                class="down"
+                alt="down"
+                src="assets/images/dropDown.svg"
+                height="auto"
+                width="auto"
+              />
+              <img
+                id="two2Icon"
+                class="up"
+                alt="up"
+                src="assets/images/dropDownUp.svg"
+                height="auto"
+                width="auto"
+              />
+            </div>
+            <div class="containerDivMain" id="two2">
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Wide Column Design with service core on one side allows
+                  optimal utilization of space
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  P.T. Flat Slab with drop designed as per IS:1893:2016 and
+                  IS:13920:2017
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>Slab to Slab Height 3.95 m</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  High Quality glass façade gives excellent permanent finish and
+                  keeps the building’s interiors cool
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Structure is designed as below: Basement slabs are designed
+                  for stack parking load of 500 Kg/Sq.m.
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Typical office floor is designed for 400 Kg/Sq.m. with false
+                  ceiling loading
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Specific areas in the floor designed for higher floor load of
+                  1000 Kg/Sq.m.
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  All AHU & Electrical room at typical office floor is designed
+                  for 400 Kg/Sq.m.
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>IPS flooring within office Space</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Higher floor to ceiling height provided for accommodating
+                  stack parking.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="containerDiv clicker" onclick="excute('three3')">
+            <div class="containerDivHeader">
+              <p>Telecom Connectivity</p>
+              <img
+                class="down"
+                alt="down"
+                src="assets/images/dropDown.svg"
+                height="auto"
+                width="auto"
+              />
+              <img
+                id="three3Icon"
+                class="up"
+                alt="up"
+                src="assets/images/dropDownUp.svg"
+                height="auto"
+                width="auto"
+              />
+            </div>
+            <div class="containerDivMain" id="three3">
+              <div class="eachItems">
+                <span>-</span>
+                <p>Right of way provided for service providers</p>
+              </div>
+            </div>
+          </div>
+          <div class="containerDiv clicker" onclick="excute('four4')">
+            <div class="containerDivHeader">
+              <p>Lobby Finishes</p>
+              <img
+                class="down"
+                alt="down"
+                src="assets/images/dropDown.svg"
+                height="auto"
+                width="auto"
+              />
+              <img
+                id="four4Icon"
+                class="up"
+                alt="up"
+                src="assets/images/dropDownUp.svg"
+                height="auto"
+                width="auto"
+              />
+            </div>
+            <div class="containerDivMain" id="four4">
+              <div class="eachItems">
+                <span>-</span>
+                <p>Lift Cladding Combination of Granite and Marble</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>Lift Lobby Flooring Granite or Marble Flooring</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <div class="containerDiv clicker" onclick="excute('five5')">
+            <div class="containerDivHeader">
+              <p>Elevators</p>
+              <img
+                class="down"
+                alt="down"
+                src="assets/images/dropDown.svg"
+                height="auto"
+                width="auto"
+              />
+              <img
+                id="five5Icon"
+                alt="up"
+                class="up"
+                src="assets/images/dropDownUp.svg"
+                height="auto"
+                width="auto"
+              />
+            </div>
+            <div class="containerDivMain" id="five5">
+              <div class="eachItems">
+                <span>-</span>
+                <p>High Speed elevators are provided</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>5 Passenger elevators of 15 Pax each</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>2 service elevators of 20 Pax each</p>
+              </div>
+            </div>
+          </div>
+          <div class="containerDiv clicker" onclick="excute('six6')">
+            <div class="containerDivHeader">
+              <p>Power</p>
+              <img
+                class="down"
+                alt="down"
+                src="assets/images/dropDown.svg"
+                height="auto"
+                width="auto"
+              />
+              <img
+                id="six6Icon"
+                class="up"
+                alt="up"
+                height="auto"
+                width="auto"
+                src="assets/images/dropDownUp.svg"
+              />
+            </div>
+            <div class="containerDivMain" id="six6">
+              <div class="eachItems">
+                <span>-</span>
+                <p>Transformer – 1250 kVA x 2 nos</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  100% power backup for office as well as common areas & car
+                  parking
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  DG – 1500 kVA x 2 nos - Higher power load (0.8 kVA /100
+                  Sq.ft.on super built-up area) is provisioned for computers,
+                  communication equipment, AHU etc.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="containerDiv clicker" onclick="excute('seven7')">
+            <div class="containerDivHeader">
+              <p>Water & Sewage Treatment Plant</p>
+              <img
+                class="down"
+                alt="down"
+                src="assets/images/dropDown.svg"
+                height="auto"
+                width="auto"
+              />
+              <img
+                id="seven7Icon"
+                class="up"
+                alt="up"
+                src="assets/images/dropDownUp.svg"
+                height="auto"
+                width="auto"
+              />
+            </div>
+            <div class="containerDivMain" id="seven7">
+              <div class="eachItems">
+                <span>-</span>
+                <p>Water Supply from Borewell & Tank Water</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Separate underground Sump, Over Head tanks are provided for
+                  Domestic as well as fire Safety needs
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Advanced 105 KLD MBR based Sewage treatment plant is
+                  provisioned
+                </p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>Water Treatment Plant is Provisioned</p>
+              </div>
+            </div>
+          </div>
+          <div class="containerDiv clicker" onclick="excute('eight8')">
+            <div class="containerDivHeader">
+              <p>Safety & Security systems</p>
+              <img
+                class="down"
+                alt="down"
+                src="assets/images/dropDown.svg"
+                height="auto"
+                width="auto"
+              />
+              <img
+                id="eight8Icon"
+                class="up"
+                alt="up"
+                height="auto"
+                width="auto"
+                src="assets/images/dropDownUp.svg"
+              />
+            </div>
+            <div class="containerDivMain" id="eight8">
+              <div class="eachItems">
+                <span>-</span>
+                <p>Designed as per NBC Norms</p>
+              </div>
+              <div class="eachItems">
+                <span>-</span>
+                <p>
+                  Base building smoke detectors, fire sprinklers and hose reels
+                  in common areas are provisioned
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="enquiry">
+        <div class="section5Header">
+          <img
+            src="assets/images/hashIcon.webp"
+            class="hashIcon"
+            alt="hashIcon"
+            loading="lazy"
+            height="auto"
+            width="auto"
+          />
+          <p class="headerText">
+            <span>BOOK</span> <span>YOUR SLOTS NOW</span>
+          </p>
+        </div>
+        <form
+          class="enquiryMain"
+          class="modalMain"
+          onsubmit="return false"
+          action="#"
+        >
+          <div class="enquirySubMain">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              id="name"
+              required
+            />
+            <input
+              type="tel"
+              onclick="this.setSelectionRange(0, this.value.length)"
+              name="phone"
+              id="phone"
+              placeholder="Mobile Number"
+              maxlength="10"
+              required
+              class="inputPhone"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              id="email"
+              required
+            />
+          </div>
+          <div class="boxWrapper">
+            <div class="checkboxWrapper">
+              <input type="checkbox" checked="checked" />
+              <p class="readLess" id="readTwo">
+                <span>I hearby declare that I have read the consent...</span
+                ><span id="readLess" onclick="readMoretwo()">Read More</span>
+              </p>
+              <div>
+                <span class="readMore" id="displayMoreTwo">
+                  I hereby declare that I have read the consent. and I appoint
+                  and allow FINCITY to access my credit information from Credit
+                  Information Companies in order to understand my credit
+                  worthiness and thereinafter provide personalised values which
+                  would help them generate the Credit Information Report, Credit
+                  Score and Credit Analysis. I/We hereby authorize FINCITY & its
+                  affiliates including banking partners to call or SMS and/or
+                  WhatsApp with reference to my application or in relation to
+                  any of FINCITY products, notwithstanding anything to the
+                  contrary that may be contained anywhere, including any
+                  registration for DNC/ NDNC.
+                </span>
+                <span id="readLess1" onclick="readLess()">Read Less</span>
+              </div>
+            </div>
+            <button
+              class="enquirBbutton"
+              onclick="openApi(event)"
+              id="enquirBbutton2"
+              type="submit"
+            >
+              Get More Information
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({});
+    </script>
+  </body>
+</html>
