@@ -129,6 +129,32 @@ window.addEventListener(
   false,
 );
 
+function slideUp(target, duration = 400) {
+  target.style.transitionProperty = "height, margin, padding";
+  target.style.transitionDuration = duration + "ms";
+  target.style.boxSizing = "border-box";
+  target.style.height = target.offsetHeight + "px";
+  target.offsetHeight;
+  target.style.overflow = "hidden";
+  target.style.height = 0;
+  target.style.paddingTop = 0;
+  target.style.paddingBottom = 0;
+  target.style.marginTop = 0;
+  target.style.marginBottom = 0;
+  window.setTimeout(() => {
+    target.style.display = "none";
+    target.style.removeProperty("height");
+    target.style.removeProperty("padding-top");
+    target.style.removeProperty("padding-bottom");
+    target.style.removeProperty("margin-top");
+    target.style.removeProperty("margin-bottom");
+    target.style.removeProperty("overflow");
+    target.style.removeProperty("transition-duration");
+    target.style.removeProperty("transition-property");
+    //alert("!");
+  }, duration);
+}
+
 window.addEventListener(
   "load",
   (event) => {
@@ -258,6 +284,22 @@ window.addEventListener(
     observer.observe(document.querySelector(".section4"));
     observer.observe(document.querySelector(".section2"));
     observer.observe(document.querySelector(".section2Mobile"));
+    animation = lottie.loadAnimation({
+      container: document.getElementById("outer"),
+      renderer: "svg",
+      loop: false,
+      speed: 1.0,
+      autoplay: true,
+      path: "assets/images/lottie1.json",
+    });
+    animation1 = lottie.loadAnimation({
+      container: document.getElementById("outer1"),
+      renderer: "svg",
+      loop: false,
+      speed: 1.0,
+      autoplay: true,
+      path: "assets/images/lottie1Mobile.json",
+    });
   },
   false,
 );
@@ -265,8 +307,6 @@ window.addEventListener(
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      animation = document.getElementById("desktop");
-      animation1 = document.getElementById("mobile");
       if (entry?.isIntersecting) {
         load();
         animation.play();
