@@ -11,6 +11,7 @@ body {
 .enquirBbutton:disabled {
   cursor: not-allowed !important;
   background-color: #919191 !important;
+  color:rgba(239, 239, 239, 0.747);
 }
 
 .navbar {
@@ -569,6 +570,7 @@ body {
     border-bottom: 1px solid #00000029;
     padding: 0px 20px 0px 20px;
     align-items: center;
+    cursor: pointer;
 }
 
 .containerDivHeader span {
@@ -861,10 +863,13 @@ button {
     align-items: center;
  }
 
+ .readMoreScroll {
+    height: 40px;
+    overflow-y: scroll;
+ }
+
  .modalMain .boxWrapper {
     width: 100% !important;
-    height: 40px;
-    overflow-y: auto;
  }
 
  .modalMain .iti {
@@ -1103,6 +1108,7 @@ button {
     color: white;
 }
 
+
   .clicker {
     transition: linear 0.5s;
   }
@@ -1142,6 +1148,10 @@ button {
     display: none;
   }
 
+
+.clicker.open  .containerDivMain.showBox {
+    display: block;
+}
   .clicker.open .containerDivHeader {
     font-weight: 600;
   }
