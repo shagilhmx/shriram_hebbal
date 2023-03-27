@@ -103,30 +103,30 @@ window.addEventListener(
   "load",
   (event) => {
     let form = document.querySelectorAll(
-      ".enquirySubMain input:not(input[type='checkbox'])",
+      ".enquirySubMain input:not(input[type='checkbox'])"
     );
     checkInputs(
       [...form].splice(0, 3),
-      document.getElementById("enquirBbutton1"),
+      document.getElementById("enquirBbutton1")
     );
     checkInputs([...form].splice(3), document.getElementById("enquirBbutton2"));
   },
-  false,
+  false
 );
 
 window.addEventListener(
   "input",
   (event) => {
     let form = document.querySelectorAll(
-      ".enquirySubMain input:not(input[type='checkbox'])",
+      ".enquirySubMain input:not(input[type='checkbox'])"
     );
     checkInputs(
       [...form].splice(0, 3),
-      document.getElementById("enquirBbutton1"),
+      document.getElementById("enquirBbutton1")
     );
     checkInputs([...form].splice(3), document.getElementById("enquirBbutton2"));
   },
-  false,
+  false
 );
 
 window.addEventListener(
@@ -144,7 +144,7 @@ window.addEventListener(
       }
     });
   },
-  false,
+  false
 );
 
 window.addEventListener(
@@ -158,7 +158,7 @@ window.addEventListener(
         blurElem.style.pointerEvents = "none";
       });
     }, 1000),
-  false,
+  false
 );
 
 function closeModal() {
@@ -216,7 +216,7 @@ function openApi(event) {
     };
 
     axios
-      .post("https://api-dcrm.fincity.com/open/opportunity", body)
+      .post("http://api-dcrm-stage.fincity.in/open/opportunity", body)
       .then((res) => {
         console.log("success", res);
         window.location.href = "/thankyou.html";
@@ -275,7 +275,7 @@ window.addEventListener(
       path: "assets/images/lottie1Mobile.json",
     });
   },
-  false,
+  false
 );
 
 const observer = new IntersectionObserver(
@@ -292,7 +292,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.75 },
+  { threshold: 0.75 }
 );
 
 function load() {
