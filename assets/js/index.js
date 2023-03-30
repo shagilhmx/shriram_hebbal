@@ -229,19 +229,25 @@ function openApi(event) {
     axios
       .post("https://api-dcrm.fincity.com/open/opportunity", body)
       .then((res) => {
-        document.getElementById("enquirySubMain").style.display = "none";
-        document.getElementById("otpVerification").style.display = "flex";
-        let len =
-          document.querySelector("#phoneNumber")?.parentElement.innerText
-            ?.length;
-        document.getElementById("enquirySubMain").style.display = "none";
-        document.getElementById("otpVerification").style.display = "flex";
-        document.querySelector("#numberText").innerHTML =
-          document.querySelector("#numberText").innerText +
-          `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
-            document.getElementById("phoneNumber")?.value
-          }</strong>`;
-        responseData = res;
+        if (new URLSearchParams(new URL(url).search).get("isOtp")) {
+          document.getElementById("enquirySubMain").style.display = "none";
+          document.getElementById("otpVerification").style.display = "flex";
+          let len =
+            document.querySelector("#phoneNumber")?.parentElement.innerText
+              ?.length;
+          document.getElementById("enquirySubMain").style.display = "none";
+          document.getElementById("otpVerification").style.display = "flex";
+          document.querySelector("#numberText").innerHTML =
+            document.querySelector("#numberText").innerText +
+            `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
+              document.getElementById("phoneNumber")?.value
+            }</strong>`;
+          responseData = res;
+        } else {
+          setTimeout(() => {
+            window.location.href = "/thankyou.html";
+          }, 1000);
+        }
       })
       .catch((err) => {
         document.getElementById("error").style.display = "block";
@@ -355,20 +361,25 @@ function detectLocation(e) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        document.getElementById("detectText").innerText = "Location Detected";
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("locationButton").style.pointerEvents = "none";
-
         delete responseData?.data?.otp;
-        let body = responseData?.data;
-
-        body["locationDto"]["latitude"] = position?.coords?.latitude;
-        body["locationDto"]["longitude"] = position?.coords?.longitude;
+        let body = {
+          token: responseData?.data?.token,
+          locationDto: {
+            latitude: position?.coords?.latitude,
+            longitude: position?.coords?.longitude,
+          },
+        };
 
         axios
           .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, body)
           .then((res) => {
             console.log(res);
+
+            document.getElementById("detectText").innerText =
+              "Location Detected";
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("locationButton").style.pointerEvents =
+              "none";
           })
           .catch((err) => {});
       },
