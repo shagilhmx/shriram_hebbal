@@ -285,13 +285,13 @@
           </div>
           <div class="boxWrapper">
             <p>Don't receive OTP?</p>
-            <p onclick="resendOtp(event)" id="resendOtp">Resend OTP</p>
+            <p onclick="resendOtp(event, true)" id="resendOtp">Resend OTP</p>
           </div>
           <button
             class="otpBbutton"
             id="otpBbutton1"
             type="submit"
-            onclick="verfiyOtp(event)"
+            onclick="verfiyOtp(event, true)"
           >
             Verify
           </button>
@@ -1935,13 +1935,13 @@
           </div>
           <div class="boxWrapper">
             <p>Don't receive OTP?</p>
-            <p onclick="resendOtp(event)" id="resendOtp">Resend OTP</p>
+            <p onclick="resendOtp(event, false)" id="resendOtp">Resend OTP</p>
           </div>
           <button
             class="otpBbutton"
-            id="otpBbutton1"
+            id="otpBbutton2"
             type="submit"
-            onclick="verfiyOtp(event)"
+            onclick="verfiyOtp(event, false)"
           >
             Verify
           </button>

@@ -115,7 +115,11 @@ window.addEventListener(
     );
     checkInputs([...form].splice(3), document.getElementById("enquirBbutton2"));
     let otpForm = document.querySelectorAll(".inutContainer input");
-    checkInputs([...otpForm], document.getElementById("otpBbutton1"));
+    checkInputs(
+      [...otpForm].splice(0, 4),
+      document.getElementById("otpBbutton1"),
+    );
+    checkInputs([...otpForm].splice(4), document.getElementById("otpBbutton2"));
   },
   false,
 );
@@ -133,7 +137,11 @@ window.addEventListener(
     checkInputs([...form].splice(3), document.getElementById("enquirBbutton2"));
 
     let otpForm = document.querySelectorAll(".inutContainer input");
-    checkInputs([...otpForm], document.getElementById("otpBbutton1"));
+    checkInputs(
+      [...otpForm].splice(0, 4),
+      document.getElementById("otpBbutton1"),
+    );
+    checkInputs([...otpForm].splice(4), document.getElementById("otpBbutton2"));
   },
   false,
 );
@@ -230,7 +238,6 @@ function openApi(event, on) {
       .post("https://api-dcrm.fincity.com/open/opportunity", body)
       .then((res) => {
         if (new URLSearchParams(new URL(url).search).get("isOtp")) {
-          console.log(document.getElementById("enquirySubMain"));
           if (on) {
             document
               .querySelector(".enquiry .section5Header")
@@ -269,6 +276,37 @@ function openApi(event, on) {
         }
       })
       .catch((err) => {
+        if (on) {
+          document
+            .querySelector(".enquiry .section5Header")
+            .setAttribute("style", "display: none"),
+            (document.getElementById("enquiryMain").style.display = "none");
+          document.getElementById("otpVerification1").style.display = "flex";
+          let len =
+            document.querySelector("#phone")?.parentElement.innerText?.length;
+          document.getElementById("enquiryMain").style.display = "none";
+          document.getElementById("otpVerification1").style.display = "flex";
+          document.querySelector("#numberText1").innerHTML =
+            document.querySelector("#numberText1").innerText +
+            `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
+              document.getElementById("phone")?.value
+            }</strong>`;
+          //responseData = res;
+        } else {
+          document.getElementById("enquirySubMain").style.display = "none";
+          document.getElementById("otpVerification").style.display = "flex";
+          let len =
+            document.querySelector("#phoneNumber")?.parentElement.innerText
+              ?.length;
+          document.getElementById("enquirySubMain").style.display = "none";
+          document.getElementById("otpVerification").style.display = "flex";
+          document.querySelector("#numberText").innerHTML =
+            document.querySelector("#numberText").innerText +
+            `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
+              document.getElementById("phoneNumber")?.value
+            }</strong>`;
+          //responseData = res;
+        }
         document.getElementById("error").style.display = "block";
         document.getElementById("error").innerHTML = err?.message;
         document.getElementById("error").style.fontSize = "12px";
@@ -405,12 +443,10 @@ function detectLocation(e) {
         document.getElementById("detectText").innerText =
           "Failed to fetch Location!";
         document.getElementById("loading").style.display = "none";
-        console.error(error);
       },
       optionLocation,
     );
   } else {
-    console.log("geo-location not supported on your browser!");
     document.getElementById("loading").style.display = "none";
     document.getElementById("detectText").innerText =
       "Failed to fetch Location!";
@@ -430,20 +466,21 @@ function backMain(e, check) {
     "Please Enter the Verification Code sent to";
 }
 
-function resendOtp(e) {
+function resendOtp(e, check) {
   e.stopPropagation();
   axios
     .post(
       `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${responseData?.data?.token}`,
     )
     .then((res) => {
-      document.querySelector("#resendOtp").innerText = "OTP SENT!";
+      document.querySelector(check ? "#resendOtp" : "#resendOtp1").innerText =
+        "OTP SENT!";
       responseData = res;
     })
     .catch((err) => {});
 }
 
-function verfiyOtp(e) {
+function verfiyOtp(e, check) {
   e.stopPropagation();
   delete responseData?.data?.locationDto;
   axios
@@ -452,8 +489,11 @@ function verfiyOtp(e) {
       responseData?.data,
     )
     .then((res) => {
-      document.getElementById("otpVerification").style.display = "none";
-      document.getElementById("location").style.display = "flex";
+      document.getElementById(
+        check ? "otpVerification" : "otpVerification1",
+      ).style.display = "none";
+      document.getElementById(check ? "location" : "location1").style.display =
+        "flex";
     })
     .catch((err) => {});
 }
