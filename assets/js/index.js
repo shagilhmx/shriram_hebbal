@@ -180,7 +180,7 @@ function closeModal() {
 }
 
 let responseData;
-function openApi(event) {
+function openApi(event, on) {
   event.stopPropagation();
   let emailRegex =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -230,10 +230,8 @@ function openApi(event) {
       .post("https://api-dcrm.fincity.com/open/opportunity", body)
       .then((res) => {
         if (new URLSearchParams(new URL(url).search).get("isOtp")) {
-          if (
-            document.getElementById("enquirySubMain").className ==
-            "modalMain enquirySubMain"
-          ) {
+          console.log(document.getElementById("enquirySubMain"));
+          if (on) {
             document
               .querySelector(".enquiry .section5Header")
               .setAttribute("style", "display: none"),
@@ -419,12 +417,16 @@ function detectLocation(e) {
   }
 }
 
-function backMain(e) {
+function backMain(e, check) {
   e.stopPropagation();
 
-  document.getElementById("otpVerification").style.display = "none";
-  document.getElementById("enquirySubMain").style.display = "flex";
-  document.querySelector("#numberText").innerHTML =
+  document.getElementById(
+    check ? "otpVerification" : "otpVerification1",
+  ).style.display = "none";
+  document.getElementById(
+    check ? "enquirySubMain" : "enquiryMain",
+  ).style.display = "flex";
+  document.querySelector(check ? "#numberText" : "#numberText1").innerHTML =
     "Please Enter the Verification Code sent to";
 }
 

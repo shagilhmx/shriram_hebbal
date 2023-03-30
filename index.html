@@ -217,7 +217,7 @@
             class="enquirBbutton"
             id="enquirBbutton1"
             type="submit"
-            onclick="openApi(event)"
+            onclick="openApi(event, false)"
           >
             Get More Information
           </button>
@@ -246,7 +246,9 @@
             <span id="numberText"
               >Please Enter the Verification Code sent to</span
             >
-            <span class="changeLink" onclick="backMain(event)">Change</span>
+            <span class="changeLink" onclick="backMain(event, true)"
+              >Change</span
+            >
           </div>
           <div class="inutContainer">
             <input
@@ -1863,7 +1865,7 @@
             </div>
             <button
               class="enquirBbutton"
-              onclick="openApi(event)"
+              onclick="openApi(event, true)"
               id="enquirBbutton2"
               type="submit"
             >
@@ -1894,7 +1896,9 @@
             <span id="numberText1"
               >Please Enter the Verification Code sent to</span
             >
-            <span class="changeLink" onclick="backMain(event)">Change</span>
+            <span class="changeLink" onclick="backMain(event, false)"
+              >Change</span
+            >
           </div>
           <div class="inutContainer">
             <input
