@@ -355,13 +355,22 @@ function detectLocation(e) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        document.getElementById("detectText").innerText = "Location Fetched";
+        document.getElementById("detectText").innerText = "Location Detected";
         document.getElementById("loading").style.display = "none";
         document.getElementById("locationButton").style.pointerEvents = "none";
 
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        delete responseData?.data?.otp;
+        let body = responseData?.data;
+
+        body["locationDto"]["latitude"] = position?.coords?.latitude;
+        body["locationDto"]["longitude"] = position?.coords?.longitude;
+
+        axios
+          .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, body)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {});
       },
       (error) => {
         // There was an error retrieving the location
