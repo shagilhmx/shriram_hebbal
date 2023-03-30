@@ -1,6 +1,7 @@
+let intl;
 window.onload = function () {
   let input = document.getElementById("phoneNumber");
-  window.intlTelInput(input, {
+  intl = window.intlTelInput(input, {
     separateDialCode: true,
     initialCountry: "IN",
     onlyCountries: [
@@ -28,7 +29,7 @@ window.onload = function () {
   });
 
   let input2 = document.getElementById("phone");
-  window.intlTelInput(input2, {
+  intl = window.intlTelInput(input2, {
     separateDialCode: true,
     initialCountry: "IN",
     onlyCountries: [
@@ -237,9 +238,7 @@ function openApi(event) {
         document.getElementById("otpVerification").style.display = "flex";
         document.querySelector("#numberText").innerHTML =
           document.querySelector("#numberText").innerText +
-          `<strong> ${document
-            .querySelector("#phoneNumber")
-            ?.parentElement.innerText?.substring(0, len)}-${
+          `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
             document.getElementById("phoneNumber")?.value
           }</strong>`;
         responseData = res;
@@ -394,7 +393,7 @@ function resendOtp(e) {
   e.stopPropagation();
   axios
     .post(
-      `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${responseData?.token}`,
+      `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${responseData?.data?.token}`,
     )
     .then((res) => {
       document.querySelector("#resendOtp").innerText = "OTP SENT!";
@@ -405,9 +404,12 @@ function resendOtp(e) {
 
 function verfiyOtp(e) {
   e.stopPropagation();
-  delete responseData?.locationDto;
+  delete responseData?.data?.locationDto;
   axios
-    .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, responseData)
+    .post(
+      `https://api-dcrm.fincity.com/open/opportunity/verify`,
+      responseData?.data,
+    )
     .then((res) => {
       document.getElementById("otpVerification").style.display = "none";
       document.getElementById("location").style.display = "flex";
