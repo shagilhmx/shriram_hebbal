@@ -409,7 +409,7 @@ const optionLocation = {
 
 function detectLocation(e, check) {
   let em = document.querySelector(
-    `.${
+    `#${
       document.querySelector(check ? "#locationButton" : "#locationButton1")
         .children[1].id
     }`,
