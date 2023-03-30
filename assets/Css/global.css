@@ -994,8 +994,12 @@ button {
 .enquiryMain button {
     background-color: #f2840d;
     color: #FFFFFF;
-    width: 280px;
+    width: 280px !important;
     align-self: center;
+}
+
+.enquiry button {
+    width: 280px !important;
 }
 
 

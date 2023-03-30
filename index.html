@@ -1811,7 +1811,7 @@
         </div>
         <form
           class="enquiryMain"
-          class="modalMain"
+          id="enquiryMain"
           onsubmit="return false"
           action="#"
         >
@@ -1871,6 +1871,126 @@
             </button>
           </div>
         </form>
+        <form
+          class="otpVerification"
+          id="otpVerification1"
+          onsubmit="return false"
+        >
+          <img
+            class="closeIcon"
+            src="assets/images/modalIcons/closeIcon.svg"
+            onclick="closeModal()"
+            alt="closeIcon"
+            loading="lazy"
+            height="auto"
+            width="auto"
+          />
+          <div class="section5Header">
+            <p class="headerText">
+              <span>Verification Code</span>
+            </p>
+          </div>
+          <div class="resendText">
+            <span id="numberText1"
+              >Please Enter the Verification Code sent to</span
+            >
+            <span class="changeLink" onclick="backMain(event)">Change</span>
+          </div>
+          <div class="inutContainer">
+            <input
+              class="otpInput"
+              maxlength="1"
+              id="_1st_"
+              onkeyup="clickEvent(this, '_2nd_')"
+              type="text"
+              onkeydown="moveFocusBack(event)"
+            />
+            <input
+              class="otpInput"
+              maxlength="1"
+              id="_2nd_"
+              onkeyup="clickEvent(this, '_3rd_')"
+              type="text"
+              onkeydown="moveFocusBack(event)"
+            />
+            <input
+              class="otpInput"
+              maxlength="1"
+              id="_3rd_"
+              type="text"
+              onkeyup="clickEvent(this, '_4th_')"
+              onkeydown="moveFocusBack(event)"
+            />
+            <input
+              class="otpInput"
+              maxlength="1"
+              id="_4th_"
+              type="text"
+              onkeydown="moveFocusBack(event)"
+            />
+          </div>
+          <div class="boxWrapper">
+            <p>Don't receive OTP?</p>
+            <p onclick="resendOtp(event)" id="resendOtp">Resend OTP</p>
+          </div>
+          <button
+            class="otpBbutton"
+            id="otpBbutton1"
+            type="submit"
+            onclick="verfiyOtp(event)"
+          >
+            Verify
+          </button>
+          <div id="error"></div>
+        </form>
+        <div class="modal location1" id="location" onsubmit="return false">
+          <img
+            class="closeIcon"
+            src="assets/images/modalIcons/closeIcon.svg"
+            onclick="closeModal()"
+            alt="closeIcon"
+            loading="lazy"
+            height="auto"
+            width="auto"
+          />
+          <div class="locationSection">
+            <div class="headerModal">
+              <lottie-player
+                title="marker"
+                background="transparent"
+                src="assets/marker-lottie.json"
+                speed="1"
+                style="width: 150px; height: 150px"
+                autoplay
+                loop
+              ></lottie-player>
+            </div>
+            <div class="consentText">
+              <p class="ThankYou">Thank You!</p>
+              <p id="serveBetter">To Serve you better</p>
+              <p class="shareLocation">Please Share your Location</p>
+            </div>
+            <button
+              class="locationButton"
+              id="locationButton"
+              type="submit"
+              onclick="detectLocation(event)"
+            >
+              <p class="detectText" id="detectText">Detect My Location</p>
+              <img src="assets/images/focus.svg" alt="located" class="detect" />
+              <lottie-player
+                class="loading"
+                id="loading"
+                src="assets/images/loading.json"
+                background="transparent"
+                speed="1"
+                autoplay
+                loop
+                style="width: 50px; height: 50px"
+              ></lottie-player>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
