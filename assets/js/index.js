@@ -1,4 +1,4 @@
-let intl;
+let intl, intl1;
 window.onload = function () {
   let input = document.getElementById("phoneNumber");
   intl = window.intlTelInput(input, {
@@ -29,7 +29,7 @@ window.onload = function () {
   });
 
   let input2 = document.getElementById("phone");
-  intl = window.intlTelInput(input2, {
+  intl1 = window.intlTelInput(input2, {
     separateDialCode: true,
     initialCountry: "IN",
     onlyCountries: [
@@ -55,6 +55,7 @@ window.onload = function () {
       "AE",
     ],
   });
+
   checkNumber(document.getElementById("phoneNumber"));
   checkNumber(document.getElementById("phone"));
   document.querySelectorAll(".otpInput").forEach((e) => {
@@ -209,6 +210,7 @@ function openApi(event, on) {
     utm_medium = searchParams.get("utm_medium");
     utm_content = searchParams.get("utm_content");
     utm_terms = searchParams.get("utm_terms");
+    const isOtp = new URLSearchParams(new URL(url).search).get("isOtp");
     const check =
       utm_campaign || utm_source || utm_content || utm_medium || utm_terms;
     let body = {
@@ -220,7 +222,7 @@ function openApi(event, on) {
         document.getElementById("name")?.value,
       projectId: 22,
       ...(utm_campaign != null && { campaignCode: utm_campaign }),
-      requireOtp: true,
+      requireOtp: isOtp != undefined ? isOtp : false,
       email:
         document.getElementById("Email")?.value ||
         document.getElementById("email")?.value,
@@ -237,7 +239,7 @@ function openApi(event, on) {
     axios
       .post("https://api-dcrm.fincity.com/open/opportunity", body)
       .then((res) => {
-        if (new URLSearchParams(new URL(url).search).get("isOtp")) {
+        if (isOtp) {
           if (on) {
             document
               .querySelector(".enquiry .section5Header")
@@ -250,7 +252,7 @@ function openApi(event, on) {
             document.getElementById("otpVerification1").style.display = "flex";
             document.querySelector("#numberText1").innerHTML =
               document.querySelector("#numberText1").innerText +
-              `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
+              `<strong> +${intl1.getSelectedCountryData()?.dialCode}-${
                 document.getElementById("phone")?.value
               }</strong>`;
             responseData = res;
@@ -271,42 +273,11 @@ function openApi(event, on) {
           }
         } else {
           setTimeout(() => {
-            window.location.href = "/thankyou.html";
+            window.location.href = "thankyou.html";
           }, 1000);
         }
       })
       .catch((err) => {
-        if (on) {
-          document
-            .querySelector(".enquiry .section5Header")
-            .setAttribute("style", "display: none"),
-            (document.getElementById("enquiryMain").style.display = "none");
-          document.getElementById("otpVerification1").style.display = "flex";
-          let len =
-            document.querySelector("#phone")?.parentElement.innerText?.length;
-          document.getElementById("enquiryMain").style.display = "none";
-          document.getElementById("otpVerification1").style.display = "flex";
-          document.querySelector("#numberText1").innerHTML =
-            document.querySelector("#numberText1").innerText +
-            `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
-              document.getElementById("phone")?.value
-            }</strong>`;
-          //responseData = res;
-        } else {
-          document.getElementById("enquirySubMain").style.display = "none";
-          document.getElementById("otpVerification").style.display = "flex";
-          let len =
-            document.querySelector("#phoneNumber")?.parentElement.innerText
-              ?.length;
-          document.getElementById("enquirySubMain").style.display = "none";
-          document.getElementById("otpVerification").style.display = "flex";
-          document.querySelector("#numberText").innerHTML =
-            document.querySelector("#numberText").innerText +
-            `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
-              document.getElementById("phoneNumber")?.value
-            }</strong>`;
-          //responseData = res;
-        }
         document.getElementById("error").style.display = "block";
         document.getElementById("error").innerHTML = err?.message;
         document.getElementById("error").style.fontSize = "12px";
@@ -370,8 +341,8 @@ const observer = new IntersectionObserver(
         animation.play();
         animation1.play();
       } else {
-        animation.pause();
-        animation1.pause();
+        animation.stop();
+        animation1.stop();
         return;
       }
     });
