@@ -1,4 +1,6 @@
-* {box-sizing: border-box;}
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Montserrat';
@@ -9,9 +11,9 @@ body {
 
 
 .enquirBbutton:disabled {
-  cursor: not-allowed !important;
-  background-color: #919191 !important;
-  color:rgba(239, 239, 239, 0.747);
+    cursor: not-allowed !important;
+    background-color: #919191 !important;
+    color: rgba(239, 239, 239, 0.747);
 }
 
 .navbar {
@@ -54,12 +56,26 @@ body {
 }
 
 @keyframes tilt-shaking {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(3deg); }
-    50% { transform: rotate(0eg); }
-    75% { transform: rotate(-3deg); }
-    100% { transform: rotate(0deg); }
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(3deg);
+    }
+
+    50% {
+        transform: rotate(0eg);
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 .fincityIcon {
     border-left: 1px solid #00000033;
@@ -102,6 +118,7 @@ body {
     border-left: 1px solid lavenderblush;
     padding-left: 6px;
 }
+
 .fincityIconClass {
     display: flex;
     flex-direction: column;
@@ -109,7 +126,7 @@ body {
     padding-left: 14px;
 }
 
-.fincityIconClass Img:last-of-type{
+.fincityIconClass Img:last-of-type {
     height: 36px !important;
 }
 
@@ -178,7 +195,7 @@ body {
 
 .rentalText {
     font-size: 30px;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
@@ -191,11 +208,50 @@ body {
     z-index: 2;
 }
 
-#one, #one1, #oneIcon, #one1Icon, #two, #three, #four, #five, #two2, #three3, #four4, #five5, #six6, #seven7, #eight8, .one, .one1, .two, .two2, .three, .three3, .four, .four4, .five5, .five, .six6, .seven7, .eight8 {
+#one,
+#one1,
+#oneIcon,
+#one1Icon,
+#two,
+#three,
+#four,
+#five,
+#two2,
+#three3,
+#four4,
+#five5,
+#six6,
+#seven7,
+#eight8,
+.one,
+.one1,
+.two,
+.two2,
+.three,
+.three3,
+.four,
+.four4,
+.five5,
+.five,
+.six6,
+.seven7,
+.eight8 {
     cursor: pointer;
 }
 
- #oneIcon, #one1Icon, #twoIcon, #two2Icon, #threeIcon, #three3Icon, #fourIcon, #four4Icon, #fiveIcon, #five5Icon, #six6Icon, #seven7Icon, #eight8Icon {
+#oneIcon,
+#one1Icon,
+#twoIcon,
+#two2Icon,
+#threeIcon,
+#three3Icon,
+#fourIcon,
+#four4Icon,
+#fiveIcon,
+#five5Icon,
+#six6Icon,
+#seven7Icon,
+#eight8Icon {
     cursor: pointer;
 }
 
@@ -236,13 +292,13 @@ body {
     margin: 4px;
 }
 
-.circular.main{
+.circular.main {
     box-shadow: 7px 7px 7px #72B1F0;
-    
+
 }
 
 .section3 {
-    background-image: linear-gradient(180deg, rgba(191,191,191, 0.3), rgba(239,239,239, 0.6));
+    background-image: linear-gradient(180deg, rgba(191, 191, 191, 0.3), rgba(239, 239, 239, 0.6));
     display: grid;
     grid-auto-flow: row;
     gap: 60px;
@@ -269,7 +325,10 @@ body {
     flex-direction: column;
 }
 
-.divFour_header, .sub_header, .row, .column1 {
+.divFour_header,
+.sub_header,
+.row,
+.column1 {
     font-size: 20px;
     display: flex;
     justify-content: space-between;
@@ -306,7 +365,7 @@ body {
     width: min-content;
 }
 
-.column1 div{
+.column1 div {
     border-radius: 62px;
     width: 130px;
     display: flex;
@@ -372,7 +431,7 @@ body {
     margin-right: 100px;
 }
 
- .itemone Img {
+.itemone Img {
     width: 100%;
 }
 
@@ -502,6 +561,7 @@ body {
     background-color: #F0F0F0;
     border-radius: 100px;
 }
+
 .section4 .section5Header {
     padding-top: 40px !important;
 }
@@ -549,14 +609,16 @@ body {
     width: 100%;
 }
 
-.left, .right {
+.left,
+.right {
     gap: 10px;
 }
 
-.left, .right {
+.left,
+.right {
     display: flex;
     flex-direction: column;
-} 
+}
 
 .containerDiv {
     box-shadow: 0px 0px 6px #00000029;
@@ -565,7 +627,7 @@ body {
 
 .containerDivHeader {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     gap: 8px;
     border-bottom: 1px solid #00000029;
     padding: 0px 20px 0px 20px;
@@ -602,17 +664,19 @@ body {
 
 @keyframes paddingAnimation1 {
     from {
-      padding: 0px 0px;
+        padding: 0px 0px;
     }
+
     to {
         padding: 10px 60px 10px 60px;
     }
-  }
-  
+}
 
-  .up, .down {
+
+.up,
+.down {
     transform: scale(1.5);
-  }
+}
 
 .faqSection .eachItems {
     display: flex;
@@ -624,10 +688,12 @@ table tbody tr {
     text-align: center;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
-  }
+}
 
 .modalPopup {
     width: 100%;
@@ -677,17 +743,17 @@ table, th, td {
 }
 
 input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button 
-{
+input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-      
+
 input[type="number"] {
     -moz-appearance: textfield;
 }
 
-.modalMain Input:not(Input[type='checkbox']), button {
+.modalMain Input:not(Input[type='checkbox']):not(.otpInput),
+button:not(.location button) {
     border: none;
     width: 100%;
     border-radius: 40px;
@@ -699,7 +765,9 @@ input[type="number"] {
     font-size: 11px;
 }
 
-#count1, #count2, #count3 {
+#count1,
+#count2,
+#count3 {
     animation-name: count;
     animation-duration: 2s;
     animation-timing-function: ease-out;
@@ -708,23 +776,24 @@ input[type="number"] {
 
 .eachItems p {
     margin-bottom: 0px;
-  }
+}
 
-  #readLess1 {
+#readLess1 {
     display: none;
     cursor: pointer;
-  }
+}
 
 @keyframes count {
-    from { 
-      /* start with a value of 0 */
-      content: "0"; 
+    from {
+        /* start with a value of 0 */
+        content: "0";
     }
-    to { 
-      /* display the final value with commas */
-      content: attr(data-value); 
+
+    to {
+        /* display the final value with commas */
+        content: attr(data-value);
     }
-  }
+}
 
 .checkbox span {
     font-weight: bold;
@@ -761,8 +830,9 @@ button {
     overflow: hidden;
     width: 80%;
     right: 0;
-    margin-top: 80px;;
-    
+    margin-top: 80px;
+    ;
+
 }
 
 .rightSectionMobile {
@@ -807,6 +877,7 @@ button {
 .rentalBoxMobile {
     display: none;
 }
+
 .section2Mobile {
     display: none;
 }
@@ -831,75 +902,76 @@ button {
 .eachItems {
     display: flex;
     gap: 4px;
- }
+}
 
- .eachItems span {
+.eachItems span {
     padding-top: 15px;
- }
+}
 
- .modal {
+.modal {
     display: none;
     position: fixed;
     vertical-align: middle;
     z-index: 999;
     top: 0;
     bottom: 0;
-    margin: auto; /* Will not center vertically and won't work in IE6/7. */
+    margin: auto;
+    /* Will not center vertically and won't work in IE6/7. */
     left: 0;
     width: 450px;
     right: 0;
- }
+}
 
- .modalContainer {
+.modalContainer {
     display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 80px;
- }
+}
 
- .modalMain {
+.modalMain {
     display: flex;
     flex-direction: column;
     align-items: center;
- }
+}
 
- .readMoreScroll {
+.readMoreScroll {
     height: 40px;
     overflow-y: scroll;
- }
+}
 
- .modalMain .boxWrapper {
+.modalMain .boxWrapper {
     width: 100% !important;
- }
+}
 
- .modalMain .iti {
+.modalMain .iti {
     width: 100% !important;
- }
+}
 
 .iti--separate-dial-code .iti__selected-flag {
     background-color: unset !important;
     border-right: 1px solid rgba(0, 0, 0, 0.05);
- }
+}
 
- .modalMain .iti__country-list {
+.modalMain .iti__country-list {
     width: 300px !important;
- }
+}
 
- .modalMain .boxWrapper .checkboxWrapper {
+.modalMain .boxWrapper .checkboxWrapper {
     color: black;
- }
+}
 
- .modalMain .section5Header {
+.modalMain .section5Header {
     padding-top: 0px !important;
     font-size: 20px !important;
- }
+}
 
- .modalMain .section5Header Img {
+.modalMain .section5Header Img {
     height: 20px !important;
     padding-top: 2px !important;
- }
+}
 
- .enquiry {
+.enquiry {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -908,48 +980,49 @@ button {
     border-top-left-radius: 100px;
     gap: 80px;
     padding: 80px;
-    
- }
 
- .enquiryMain {
+}
+
+.enquiryMain {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 50px;
     align-items: center;
- }
+}
 
- .enquiryMain button {
+.enquiryMain button {
     background-color: #f2840d;
     color: #FFFFFF;
-    width: 280px;  
+    width: 280px;
     align-self: center;
- }
+}
 
 
- .enquirySubMain {
+.enquirySubMain {
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
- }
+}
 
- .enquirySubMain .iti, input {
+.enquirySubMain .iti,
+input:not(.otpInput) {
     width: 280px;
     border-radius: 36px;
     height: 40px;
     border: none;
- }
+}
 
- .checkboxWrapper {
+.checkboxWrapper {
     display: flex;
     gap: 5px;
     color: white;
     align-items: flex-start;
- }
+}
 
- input[type='checkbox'] {
+input[type='checkbox'] {
     border-radius: 0px !important;
     cursor: pointer;
     accent-color: #FFD358;
@@ -959,54 +1032,55 @@ button {
     border: 1px solid #FFD358;
     font-size: 10px;
     transform: scale(1.3);
- }
+}
 
- .checkboxWrapper p {
+.checkboxWrapper p {
     margin: 0px;
- }
+}
 
- .checkboxWrapper span:last-of-type {
+.checkboxWrapper span:last-of-type {
     font-weight: bold;
- }
+}
 
- .section5Header {
+.section5Header {
     display: flex;
     font-size: 30px;
     margin: auto;
     padding-top: 80px !important;
- }
+}
 
- .section5Header .headerText {
+.section5Header .headerText {
     padding-left: 4px;
     font-family: 'Arvo' !important;
- }
+}
 
- .enquiry .section5Header, .section3 .section5Header {
+.enquiry .section5Header,
+.section3 .section5Header {
     padding-top: 0px !important;
- }
+}
 
- .section5Header .hashIcon {
+.section5Header .hashIcon {
     height: 32px;
     margin: 0 !important;
     padding-top: 8px;
- }
+}
 
- .headerText {
+.headerText {
     margin: 0px;
- }
+}
 
- .headerText span:first-of-type {
+.headerText span:first-of-type {
     font-weight: bold;
- }
+}
 
- .faqSection {
+.faqSection {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
- }
+}
 
- .boxWrapper {
+.boxWrapper {
     width: fit-content;
     width: -moz-fit-content;
     display: flex;
@@ -1014,90 +1088,93 @@ button {
     gap: 20px;
     align-items: center;
     width: 60%;
- }
+}
 
- #displayMore, #displayMoreTwo {
+#displayMore,
+#displayMoreTwo {
     display: none;
- }
+}
 
- .readMore {
+.readMore {
     text-align: left;
     display: inline;
- }
+}
 
- .faqMainContainer {
+.faqMainContainer {
     width: 100%;
 }
 
- .faqMainContainer .containerDivHeader p {
+.faqMainContainer .containerDivHeader p {
     color: #298ec7 !important;
- }
+}
 
- .faqMainContainer .containerDivHeader {
+.faqMainContainer .containerDivHeader {
     justify-content: space-between;
- }
+}
 
- .mapSection {
+.mapSection {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     gap: 40px;
     padding: 0px 150px 80px 150px;
- }
+}
 
- .mapBox iframe {
+.mapBox iframe {
     border-radius: 36px;
     height: 450px;
     width: 100%;
- }
+}
 
- .mapBox {
+.mapBox {
     width: 100%;
     height: 100%;
- }
+}
 
- .divOne .itemtwo .section5Header img{
+.divOne .itemtwo .section5Header img {
     width: auto !important;
     height: 25px !important;
- }
+}
 
- .divOne .itemtwo .section5Header {
+.divOne .itemtwo .section5Header {
     padding-top: 0px !important;
     font-size: 24px;
     margin: 0px;
     padding-left: 20px;
- }
+}
 
- .divOne .itemone .section5Header img, .itemtwo .section5Header img{
+.divOne .itemone .section5Header img,
+.itemtwo .section5Header img {
     width: auto !important;
     height: 22px !important;
- }
+}
 
- .divOne .itemone .section5Header, .itemtwo .section5Header {
+.divOne .itemone .section5Header,
+.itemtwo .section5Header {
     padding-top: 0px !important;
     font-size: 24px;
     margin: 0px;
     padding-left: 20px;
- }
+}
 
- .mainDiv3Mobile {
+.mainDiv3Mobile {
     display: none;
- }
- 
- .divFourWrapper {
+}
+
+.divFourWrapper {
     padding-left: 20px;
     padding-right: 20px;
     width: 85%;
     justify-self: center;
     z-index: 2;
- }
- 
+}
+
 .outer {
     position: relative;
 }
 
-.absolute1  {
+.absolute1 {
     position: absolute;
     right: 0;
     top: 0;
@@ -1109,60 +1186,196 @@ button {
 }
 
 
-  .clicker {
+.clicker {
     transition: linear 0.5s;
-  }
-  .clicker:not(.open) .containerDivMain {
+}
+
+.clicker:not(.open) .containerDivMain {
     display: none;
     overflow: hidden;
     animation-name: paddingAnimation2;
     animation-duration: .4s;
     animation-timing-function: ease-out;
-  }
+}
 
-  @keyframes paddingAnimation2 {
+@keyframes paddingAnimation2 {
     from {
-      padding: 10px 60px 10px 60px;
+        padding: 10px 60px 10px 60px;
     }
+
     to {
         padding: 0px 10px;
-      }
-  }
-  .clicker:not(.open) .containerDivHeader .down,
-  .clicker:not(.open) .containerDivHeader .minus {
+    }
+}
+
+.clicker:not(.open) .containerDivHeader .down,
+.clicker:not(.open) .containerDivHeader .minus {
     display: none;
-  }
-  .clicker:not(.open) .containerDivHeader .up,
-  .clicker:not(.open) .containerDivHeader .plus {
+}
+
+.clicker:not(.open) .containerDivHeader .up,
+.clicker:not(.open) .containerDivHeader .plus {
     display: inline-block;
-  }
-  .clicker.open .containerDivHeader .down,
-  .clicker.open .containerDivHeader .minus {
+}
+
+.clicker.open .containerDivHeader .down,
+.clicker.open .containerDivHeader .minus {
     display: inline-block;
-  }
-  .clicker.open .containerDivHeader .up,
-  .clicker.open .containerDivHeader .plus {
+}
+
+.clicker.open .containerDivHeader .up,
+.clicker.open .containerDivHeader .plus {
     display: none;
-  }
-  .clicker.open .containerDivMain {
+}
+
+.clicker.open .containerDivMain {
     display: none;
-  }
+}
 
 
-.clicker.open  .containerDivMain.showBox {
+.clicker.open .containerDivMain.showBox {
     display: block;
 }
-  .clicker.open .containerDivHeader {
+
+.clicker.open .containerDivHeader {
     font-weight: 600;
-  }
+}
 
-  #outer {
+#outer {
     display: block;
-  }
+}
 
-  #outer1 {
+#outer1 {
     display: none;
-  }
+}
+
+.otpVerification {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 40px 40px 40px;
+}
+
+.otpVerification .section5Header {
+    padding-top: 0px !important;
+}
+
+.otpVerification .boxWrapper {
+    width: unset;
+    gap: 10px;
+}
+
+.otpVerification .boxWrapper p {
+    margin: 0px;
+}
+
+.otpVerification .boxWrapper p:last-of-type {
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.otpVerification .boxWrapper p:last-of-type:hover {
+    font-weight: 700;
+}
+
+.inutContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.otpInput {
+    background-color: white;
+    color: black;
+    border: 1px solid #00000029;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.changeLink {
+    color: #298EC7;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.changeLink:hover {
+    font-weight: 700;
+}
+
+#error {
+    display: none;
+}
+
+.otpBbutton:disabled,
+.location button:disabled {
+    cursor: not-allowed !important;
+    background-color: #919191 !important;
+    color: rgba(239, 239, 239, 0.747);
+}
+
+.otpVerification button,
+.location button {
+    background-color: #f2840d;
+    color: #FFFFFF;
+}
+
+.locationSection {
+    padding: 40px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.location {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.location .ThankYou {
+    font-size: 24px;
+}
+
+.headerModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.location .consentText {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 16px;
+}
+
+.location p {
+    margin: 0px;
+}
+
+.location button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.location button img {
+    width: 20px;
+}
+
+.loading {
+    display: none;
+}
 
 @media (max-width: 768px) {
     #outer {
@@ -1172,16 +1385,21 @@ button {
     #outer1 {
         display: block;
     }
-    .divOne .itemone .section5Header, .itemtwo .section5Header {
+
+    .divOne .itemone .section5Header,
+    .itemtwo .section5Header {
         justify-content: center;
         padding-left: 0px !important;
     }
+
     .itemoneDivHeader {
         font-size: 15px;
     }
+
     .section3 .section5Header {
         justify-content: center;
     }
+
     .itemoneDiv {
         padding-right: unset;
     }
@@ -1213,6 +1431,7 @@ button {
     table tbody tr {
         font-size: 10px;
     }
+
     .section1 {
         flex-direction: column;
     }
@@ -1221,9 +1440,11 @@ button {
         display: block;
         padding-top: 80px;
     }
+
     .navbar {
         padding: 16px;
     }
+
     .leftSection .secton1_innerdiv {
         display: none !important;
     }
@@ -1297,12 +1518,12 @@ button {
         border-radius: 36px;
         align-items: center;
     }
-    
+
     .outer {
         position: relative;
     }
 
-    .absolute  {
+    .absolute {
         position: absolute;
         right: 0;
         top: 0;
@@ -1318,12 +1539,12 @@ button {
         padding: 30px !important;
         gap: 30px !important;
     }
-    
+
     .section5Header {
         font-size: 20px !important;
         margin: unset !important;
     }
-    
+
     .section4 .section5Header {
         padding-top: 20px !important;
     }
@@ -1332,12 +1553,13 @@ button {
         height: 22px !important;
         padding-top: 4px !important;
     }
-    
+
     .mapSection .section5Header {
         padding-top: 0px !important;
     }
 
-    .divFour_header, .sub_header {
+    .divFour_header,
+    .sub_header {
         padding-right: 4px;
     }
 
@@ -1433,12 +1655,13 @@ button {
 
     @keyframes paddingAnimation {
         from {
-          padding: 0px 0px;
+            padding: 0px 0px;
         }
+
         to {
-          padding: 0px 35px 10px 35px;
+            padding: 0px 35px 10px 35px;
         }
-      }
+    }
 
     .containerDivMain p {
         font-size: 14px !important;
@@ -1449,10 +1672,11 @@ button {
         border-left: 0px !important;
         padding-left: 0px !important;
     }
+
     .propertyDeveloper Img:first-of-type {
         display: none;
     }
-    
+
     .propertyDeveloper .navImg:last-of-type {
         border-left: none;
     }
@@ -1463,7 +1687,7 @@ button {
 
     .row {
         padding-bottom: 20px !important;
-    } 
+    }
 
     .buttonFincityDiv Img:not(.fincityIconClass Img) {
         height: 24px;
@@ -1494,16 +1718,30 @@ button {
         border-left: none;
         animation: tilt-shaking 0.3s infinite;
     }
-    
-    @keyframes tilt-shaking {
-        0% { transform: rotate(0deg); }
-        25% { transform: rotate(6deg); }
-        50% { transform: rotate(0eg); }
-        75% { transform: rotate(-6deg); }
-        100% { transform: rotate(0deg); }
-      }
 
-    .navbarButton span{
+    @keyframes tilt-shaking {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(6deg);
+        }
+
+        50% {
+            transform: rotate(0eg);
+        }
+
+        75% {
+            transform: rotate(-6deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    .navbarButton span {
         display: none;
     }
 
@@ -1632,8 +1870,8 @@ button {
 
     .mapBox iframe {
         height: 300px !important;
-     }
-    
+    }
+
     .divFour p:not(.section5Header p) {
         font-size: 9px !important;
     }
@@ -1646,12 +1884,12 @@ button {
     .column1 {
         gap: 5px !important;
     }
-    
+
     .mainDiv5 {
         grid-auto-flow: row;
     }
 
-    .mainDiv5 .mid{
+    .mainDiv5 .mid {
         display: none;
     }
 
@@ -1664,9 +1902,10 @@ button {
         padding-top: 20px !important;
     }
 
-    .up, .down {
+    .up,
+    .down {
         transform: scale(1.3);
-      }
+    }
 
     .betterBusiness {
         text-align: center;
@@ -1709,16 +1948,17 @@ button {
         animation-name: paddingAnimation3 !important;
         animation-duration: .4s;
         animation-timing-function: ease-out;
-      }
+    }
 
     @keyframes paddingAnimation3 {
         from {
-          padding: 0px 35px 10px 35px;
+            padding: 0px 35px 10px 35px;
         }
+
         to {
             padding: 0px 10px;
-          }
-      }
+        }
+    }
 
     .modal {
         display: none;
@@ -1727,31 +1967,34 @@ button {
         z-index: 999;
         top: 0;
         bottom: 0;
-        margin: auto; /* Will not center vertically and won't work in IE6/7. */
+        margin: auto;
+        /* Will not center vertically and won't work in IE6/7. */
         left: 0;
         width: 95% !important;
         right: 0;
         border-radius: 50px !important;
-     }
+    }
 
-     .modalMain, .modalHeader {
+    .modalMain,
+    .modalHeader {
         padding: 40px 20px 40px 20px;
-     }
+    }
 
-     input[type='checkbox'] {
-        transform: scale(1) !important; 
+    input[type='checkbox'] {
+        transform: scale(1) !important;
         margin: 0px !important;
         padding-bottom: 4px !important;
-     }
+    }
 
-     .enquirySubMain .iti, input {
+    .enquirySubMain .iti,
+    input {
         width: 100% !important;
-     }
+    }
 
- }
+}
 
 
-  @media (max-width: 360px) {
+@media (max-width: 360px) {
     .navbarDiv {
         gap: 5px !important;
     }
@@ -1759,7 +2002,7 @@ button {
     .buttonFincityDiv {
         gap: 5px !important;
     }
-  }
+}
 
 .innerThankDiv {
     position: absolute;
@@ -1772,7 +2015,7 @@ button {
     margin: auto;
     display: flex;
     width: 100%;
-} 
+}
 
 .mainInnerDiv {
     display: flex;
@@ -1784,7 +2027,7 @@ button {
 }
 
 .mainInner img:last-of-type {
-    border-left: 1px solid #00000033; 
+    border-left: 1px solid #00000033;
     padding-left: 20px
 }
 
@@ -1801,7 +2044,7 @@ button {
 .thankyou p {
     margin: 10px;
     font-size: 28px;
-  }
+}
 
 .contact {
     font-size: 20px;

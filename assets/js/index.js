@@ -56,6 +56,9 @@ window.onload = function () {
   });
   checkNumber(document.getElementById("phoneNumber"));
   checkNumber(document.getElementById("phone"));
+  document.querySelectorAll(".otpInput").forEach((e) => {
+    checkNumber(e);
+  });
 };
 
 function checkNumber(item) {
@@ -103,30 +106,35 @@ window.addEventListener(
   "load",
   (event) => {
     let form = document.querySelectorAll(
-      ".enquirySubMain input:not(input[type='checkbox'])"
+      ".enquirySubMain input:not(input[type='checkbox'])",
     );
     checkInputs(
       [...form].splice(0, 3),
-      document.getElementById("enquirBbutton1")
+      document.getElementById("enquirBbutton1"),
     );
     checkInputs([...form].splice(3), document.getElementById("enquirBbutton2"));
+    let otpForm = document.querySelectorAll(".inutContainer input");
+    checkInputs([...otpForm], document.getElementById("otpBbutton1"));
   },
-  false
+  false,
 );
 
 window.addEventListener(
   "input",
   (event) => {
     let form = document.querySelectorAll(
-      ".enquirySubMain input:not(input[type='checkbox'])"
+      ".enquirySubMain input:not(input[type='checkbox'])",
     );
     checkInputs(
       [...form].splice(0, 3),
-      document.getElementById("enquirBbutton1")
+      document.getElementById("enquirBbutton1"),
     );
     checkInputs([...form].splice(3), document.getElementById("enquirBbutton2"));
+
+    let otpForm = document.querySelectorAll(".inutContainer input");
+    checkInputs([...otpForm], document.getElementById("otpBbutton1"));
   },
-  false
+  false,
 );
 
 window.addEventListener(
@@ -144,7 +152,7 @@ window.addEventListener(
       }
     });
   },
-  false
+  false,
 );
 
 window.addEventListener(
@@ -157,8 +165,8 @@ window.addEventListener(
         blurElem.style.filter = "blur(5px)";
         blurElem.style.pointerEvents = "none";
       });
-    }, 1000),
-  false
+    }, 10000),
+  false,
 );
 
 function closeModal() {
@@ -170,6 +178,7 @@ function closeModal() {
   });
 }
 
+let responseData;
 function openApi(event) {
   event.stopPropagation();
   let emailRegex =
@@ -191,7 +200,8 @@ function openApi(event) {
     utm_medium = searchParams.get("utm_medium");
     utm_content = searchParams.get("utm_content");
     utm_terms = searchParams.get("utm_terms");
-
+    const check =
+      utm_campaign || utm_source || utm_content || utm_medium || utm_terms;
     let body = {
       phone:
         document.getElementById("phoneNumber")?.value ||
@@ -199,12 +209,13 @@ function openApi(event) {
       name:
         document.getElementById("Name")?.value ||
         document.getElementById("name")?.value,
-      propjectId: 22,
+      projectId: 22,
       ...(utm_campaign != null && { campaignCode: utm_campaign }),
+      requireOtp: true,
       email:
         document.getElementById("Email")?.value ||
         document.getElementById("email")?.value,
-      ...(searchParams?.entries?.length > 0 && {
+      ...(check && {
         metadata: {
           utm_campaign: utm_campaign,
           utm_content: utm_content,
@@ -214,19 +225,30 @@ function openApi(event) {
         },
       }),
     };
-
     axios
-      .post("http://api-dcrm-stage.fincity.in/open/opportunity", body)
+      .post("https://api-dcrm.fincity.com/open/opportunity", body)
       .then((res) => {
-        console.log("success", res);
-        window.location.href = "/thankyou.html";
+        document.getElementById("enquirySubMain").style.display = "none";
+        document.getElementById("otpVerification").style.display = "flex";
+        let len =
+          document.querySelector("#phoneNumber")?.parentElement.innerText
+            ?.length;
+        document.getElementById("enquirySubMain").style.display = "none";
+        document.getElementById("otpVerification").style.display = "flex";
+        document.querySelector("#numberText").innerHTML =
+          document.querySelector("#numberText").innerText +
+          `<strong> ${document
+            .querySelector("#phoneNumber")
+            ?.parentElement.innerText?.substring(0, len)}-${
+            document.getElementById("phoneNumber")?.value
+          }</strong>`;
+        responseData = res;
       })
       .catch((err) => {
         document.getElementById("error").style.display = "block";
         document.getElementById("error").innerHTML = err?.message;
         document.getElementById("error").style.fontSize = "12px";
         document.getElementById("error").style.color = "red";
-        console.log(err);
       });
   }
 }
@@ -275,7 +297,7 @@ window.addEventListener(
       path: "assets/images/lottie1Mobile.json",
     });
   },
-  false
+  false,
 );
 
 const observer = new IntersectionObserver(
@@ -286,13 +308,13 @@ const observer = new IntersectionObserver(
         animation.play();
         animation1.play();
       } else {
-        animation.stop();
-        animation1.stop();
+        animation.pause();
+        animation1.pause();
         return;
       }
     });
   },
-  { threshold: 0.75 }
+  { threshold: 0.75 },
 );
 
 function load() {
@@ -302,4 +324,93 @@ function load() {
   animateValue("count4", 1.8, true);
   animateValue("count5", 511, false);
   animateValue("count6", 267273, false);
+}
+
+function clickEvent(first, last) {
+  if (first.value.length) {
+    document.getElementById(last).focus();
+  }
+}
+
+function moveFocusBack(e) {
+  var prevInput = e.target.previousElementSibling;
+  if (e.key === "Backspace" && e.target.value === "" && prevInput != null) {
+    prevInput.focus();
+  }
+}
+
+const optionLocation = {
+  enableHighAccuracy: true,
+  timeout: 10000,
+  maximumAge: 0,
+};
+
+function detectLocation(e) {
+  let em = document.querySelector(
+    `.${document.querySelector("#locationButton").children[1].className}`,
+  );
+
+  em.remove();
+  document.getElementById("loading").style.display = "block";
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        document.getElementById("detectText").innerText = "Location Fetched";
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("locationButton").style.pointerEvents = "none";
+
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+      },
+      (error) => {
+        // There was an error retrieving the location
+        document.getElementById("detectText").innerText =
+          "Failed to fetch Location!";
+        document.getElementById("loading").style.display = "none";
+        console.error(error);
+      },
+      optionLocation,
+    );
+  } else {
+    console.log("geo-location not supported on your browser!");
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("detectText").innerText =
+      "Failed to fetch Location!";
+  }
+}
+
+function backMain(e) {
+  e.stopPropagation();
+
+  document.getElementById("otpVerification").style.display = "none";
+  document.getElementById("enquirySubMain").style.display = "flex";
+  document.querySelector("#numberText").innerHTML =
+    "Please Enter the Verification Code sent to";
+}
+
+function resendOtp(e) {
+  e.stopPropagation();
+  axios
+    .post(
+      `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${responseData?.token}`,
+    )
+    .then((res) => {
+      document.querySelector("#resendOtp").innerText = "OTP SENT!";
+      responseData = res;
+    })
+    .catch((err) => {});
+}
+
+function verfiyOtp(e) {
+  e.stopPropagation();
+  delete responseData?.locationDto;
+  axios
+    .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, responseData)
+    .then((res) => {
+      document.getElementById("otpVerification").style.display = "none";
+      document.getElementById("location").style.display = "flex";
+    })
+    .catch((err) => {});
 }
