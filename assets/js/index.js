@@ -407,13 +407,17 @@ const optionLocation = {
   maximumAge: 0,
 };
 
-function detectLocation(e) {
+function detectLocation(e, check) {
   let em = document.querySelector(
-    `.${document.querySelector("#locationButton").children[1].className}`,
+    `.${
+      document.querySelector(check ? "#locationButton" : "#locationButton1")
+        .children[1].className
+    }`,
   );
 
   em.remove();
-  document.getElementById("loading").style.display = "block";
+  document.getElementById(check ? "loading" : "loading1").style.display =
+    "block";
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -430,25 +434,31 @@ function detectLocation(e) {
         axios
           .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, body)
           .then((res) => {
-            document.getElementById("detectText").innerText =
-              "Location Detected";
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("locationButton").style.pointerEvents =
-              "none";
+            document.getElementById(
+              check ? "detectText" : "detectText1",
+            ).innerText = "Location Detected";
+            document.getElementById(
+              check ? "loading" : "loading1",
+            ).style.display = "none";
+            document.getElementById(
+              check ? "locationButton" : "locationButton1",
+            ).style.pointerEvents = "none";
           })
           .catch((err) => {});
       },
       (error) => {
         // There was an error retrieving the location
-        document.getElementById("detectText").innerText =
+        document.getElementById(check ? "detectText" : "detectText").innerText =
           "Failed to fetch Location!";
-        document.getElementById("loading").style.display = "none";
+        document.getElementById(check ? "loading" : "loading1").style.display =
+          "none";
       },
       optionLocation,
     );
   } else {
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("detectText").innerText =
+    document.getElementById(check ? "loading" : "loading1").style.display =
+      "none";
+    document.getElementById(check ? "detectText" : "detectText1").innerText =
       "Failed to fetch Location!";
   }
 }

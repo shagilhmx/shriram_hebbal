@@ -1332,6 +1332,15 @@ input[type='checkbox'] {
     flex-direction: column;
     gap: 20px;
     width: 100%;
+    align-items: center;
+}
+
+.enquiry .locationSection {
+    padding: 0px;
+}
+
+.enquiry .otpVerification {
+    padding: 0px;
 }
 
 .location {
