@@ -64,24 +64,15 @@ window.onload = function () {
 };
 
 const getDeviceType = () => {
-  let device;
-  axios
-    .get(`http://api-dcrm-dev.fincity.in/master/device-types`)
-    .then((res) => {
-      if (/Android/i.test(navigator.userAgent)) {
-        device = res.find((x) => x.name == "Android")?.id;
-      } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-        device = res.find((x) => x.name == "Ios")?.id;
-      } else if (/Win/i.test(navigator.userAgent)) {
-        device = res.find((x) => x.name == "Windows")?.id;
-      } else if (/Mac/i.test(navigator.userAgent)) {
-        device = res.find((x) => x.name == "Osx")?.id;
-      } else {
-        device = 1;
-      }
-    })
-    .catch((err) => {});
-  return device;
+  if (/Android/i.test(navigator.userAgent)) {
+    return "Android";
+  } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    return "Ios";
+  } else if (/Win/i.test(navigator.userAgent)) {
+    return "Windows";
+  } else if (/Mac/i.test(navigator.userAgent)) {
+    return "Osx";
+  }
 };
 
 function checkNumber(item) {
