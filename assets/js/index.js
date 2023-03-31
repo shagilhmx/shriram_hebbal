@@ -418,7 +418,10 @@ function detectLocation(e, check) {
         };
 
         axios
-          .post(`http:///api-dcrm-stage.fincity.in/open/opportunity`, body)
+          .post(
+            `http:///api-dcrm-stage.fincity.in/open/opportunity/verify`,
+            body,
+          )
           .then((res) => {
             document.getElementById(
               check ? "detectText" : "detectText1",
