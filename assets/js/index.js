@@ -400,8 +400,9 @@ function detectLocation(e, check) {
     )
     .remove();
 
-  document.getElementById(check ? "loading" : "loading1").style.display =
-    "block";
+  document.querySelector(
+    check ? "#locationButton loading" : "#locationButton1 loading1",
+  ).style.display = "block";
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -424,8 +425,8 @@ function detectLocation(e, check) {
             document.getElementById(
               check ? "detectText" : "detectText1",
             ).innerText = "Location Detected";
-            document.getElementById(
-              check ? "loading" : "loading1",
+            document.querySelector(
+              check ? "#locationButton #loading" : "#locationButton1 #loading1",
             ).style.display = "none";
             document.getElementById(
               check ? "locationButton" : "locationButton1",
@@ -434,14 +435,16 @@ function detectLocation(e, check) {
             let count = 10;
 
             let countdown = setInterval(() => {
-              document.getElementById("timer").innerText = count;
+              document.querySelector(
+                check ? "#locationButton #timer" : "#locationButton1 #timer1",
+              ).innerText = count;
               count--;
 
               if (count === 0) {
                 let deviceType = getDeviceType();
                 console.log(deviceType);
                 clearInterval(countdown);
-                window.location.href = `https://dcrm.fincity.com/?device-type=${deviceType}&token${responseData?.token}`;
+                window.location.href = `https://dcrm.fincity.com/?device-type=${deviceType}&token${responseData?.data?.token}`;
               }
             }, 1000);
           })
