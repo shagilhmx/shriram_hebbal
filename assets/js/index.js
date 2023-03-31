@@ -63,6 +63,21 @@ window.onload = function () {
   });
 };
 
+const getDeviceType = () => {
+  const ua = navigator.userAgent;
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+    return "tablet";
+  }
+  if (
+    /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+      ua,
+    )
+  ) {
+    return "mobile";
+  }
+  return "desktop";
+};
+
 function checkNumber(item) {
   item.addEventListener("input", () => {
     const inputValue = item.value;
@@ -191,6 +206,10 @@ function closeModal() {
 let responseData;
 function openApi(event, on) {
   event.stopPropagation();
+  let in_ = document.getElementById("enquirBbutton1");
+  in_.style.pointerEvents = "none";
+  in_.innerHTML +=
+    "<lottie-player class='loading' id='loading' src='assets/images/loading.json' background='transparent' speed='1' autoplay loop style='width: 50px; height: 50px'></lottie-player>";
   let emailRegex =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -237,17 +256,13 @@ function openApi(event, on) {
       }),
     };
     axios
-      .post("https://api-dcrm.fincity.com/open/opportunity", body)
+      .post("http:///api-dcrm-stage.fincity.in/open/opportunity", body)
       .then((res) => {
         if (isOtp) {
           if (on) {
             document
               .querySelector(".enquiry .section5Header")
-              .setAttribute("style", "display: none"),
-              (document.getElementById("enquiryMain").style.display = "none");
-            document.getElementById("otpVerification1").style.display = "flex";
-            let len =
-              document.querySelector("#phone")?.parentElement.innerText?.length;
+              .setAttribute("style", "display: none");
             document.getElementById("enquiryMain").style.display = "none";
             document.getElementById("otpVerification1").style.display = "flex";
             document.querySelector("#numberText1").innerHTML =
@@ -403,7 +418,7 @@ function detectLocation(e, check) {
         };
 
         axios
-          .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, body)
+          .post(`http:///api-dcrm-stage.fincity.in/open/opportunity`, body)
           .then((res) => {
             document.getElementById(
               check ? "detectText" : "detectText1",
@@ -414,6 +429,21 @@ function detectLocation(e, check) {
             document.getElementById(
               check ? "locationButton" : "locationButton1",
             ).style.pointerEvents = "none";
+
+            let count = 10;
+            countdown();
+
+            let countdown = setInterval(() => {
+              document.getElementById("timer").innerText = count;
+              count--;
+
+              if (count === 0) {
+                let deviceType = getDeviceType();
+                console.log(deviceType);
+                clearInterval(countdown);
+                window.location.href = `https://dcrm.fincity.com/?device-type=${deviceType}&token${responseData?.token}`;
+              }
+            }, 10000);
           })
           .catch((err) => {});
       },
@@ -451,7 +481,7 @@ function resendOtp(e, check) {
   e.stopPropagation();
   axios
     .post(
-      `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${responseData?.data?.token}`,
+      `http:///api-dcrm-stage.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`,
     )
     .then((res) => {
       document.querySelector(check ? "#resendOtp" : "#resendOtp1").innerText =
@@ -466,7 +496,7 @@ function verfiyOtp(e, check) {
   delete responseData?.data?.locationDto;
   axios
     .post(
-      `https://api-dcrm.fincity.com/open/opportunity/verify`,
+      `http:///api-dcrm-stage.fincity.in/open/opportunity/verify`,
       responseData?.data,
     )
     .then((res) => {

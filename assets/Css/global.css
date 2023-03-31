@@ -1297,6 +1297,7 @@ input[type='checkbox'] {
     width: 60px;
     height: 60px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .changeLink {
@@ -1351,6 +1352,10 @@ input[type='checkbox'] {
 
 .location .ThankYou {
     font-size: 24px;
+}
+
+#timer {
+    display: none;
 }
 
 .headerModal {
