@@ -447,7 +447,7 @@ function detectLocation(e, check) {
                 let deviceType = getDeviceType();
                 console.log(deviceType);
                 clearInterval(countdown);
-                window.location.href = `http://localhost:8000/?&user=consumer&device-type=${deviceType}&token${responseData?.data?.token}`;
+                window.location.href = `http://localhost:8000/?&user=consumer&device-type=${deviceType}&token=${responseData?.data?.token}`;
               }
             }, 500);
           })
