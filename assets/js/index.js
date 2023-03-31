@@ -395,8 +395,10 @@ const optionLocation = {
 
 function detectLocation(e, check) {
   document
-    .querySelector(check ? "#locationButton" : "#locationButton1")
-    .children[0].remove();
+    .querySelector(
+      check ? "#locationButton #detect" : "#locationButton1 #detect",
+    )
+    .remove();
 
   document.getElementById(check ? "loading" : "loading1").style.display =
     "block";
