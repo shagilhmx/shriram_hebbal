@@ -431,6 +431,9 @@ function detectLocation(e, check) {
             document.getElementById(
               check ? "locationButton" : "locationButton1",
             ).style.pointerEvents = "none";
+            document.querySelector(
+              check ? "#locationButton #timer" : "#locationButton1 #timer1",
+            ).style.display = "block";
 
             let count = 10;
 
@@ -444,7 +447,7 @@ function detectLocation(e, check) {
                 let deviceType = getDeviceType();
                 console.log(deviceType);
                 clearInterval(countdown);
-                window.location.href = `https://dcrm.fincity.com/?device-type=${deviceType}&token${responseData?.data?.token}`;
+                window.location.href = `https://dcrm-stage.fincity.in/?&user=consumer&device-type=${deviceType}&token${responseData?.data?.token}`;
               }
             }, 1000);
           })
