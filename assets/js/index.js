@@ -435,7 +435,7 @@ function detectLocation(e, check) {
               check ? "#locationButton #timer" : "#locationButton1 #timer1",
             ).style.display = "block";
 
-            let count = 10;
+            let count = 5;
 
             let countdown = setInterval(() => {
               document.querySelector(
@@ -447,9 +447,9 @@ function detectLocation(e, check) {
                 let deviceType = getDeviceType();
                 console.log(deviceType);
                 clearInterval(countdown);
-                window.location.href = `https://dcrm-stage.fincity.in/?&user=consumer&device-type=${deviceType}&token${responseData?.data?.token}`;
+                window.location.href = `http://localhost:8000/?&user=consumer&device-type=${deviceType}&token${responseData?.data?.token}`;
               }
-            }, 1000);
+            }, 500);
           })
           .catch((err) => {});
       },
