@@ -401,7 +401,7 @@ function detectLocation(e, check) {
     .remove();
 
   document.querySelector(
-    check ? "#locationButton loading" : "#locationButton1 loading1",
+    check ? "#locationButton #loading" : "#locationButton1 #loading1",
   ).style.display = "block";
 
   if (navigator.geolocation) {
