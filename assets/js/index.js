@@ -394,14 +394,10 @@ const optionLocation = {
 };
 
 function detectLocation(e, check) {
-  let em = document.querySelector(
-    `#${
-      document.querySelector(check ? "#locationButton" : "#locationButton1")
-        .children[1].id
-    }`,
-  );
+  document
+    .querySelector(check ? "#locationButton" : "#locationButton1")
+    .children[0].remove();
 
-  em.remove();
   document.getElementById(check ? "loading" : "loading1").style.display =
     "block";
 
@@ -434,7 +430,6 @@ function detectLocation(e, check) {
             ).style.pointerEvents = "none";
 
             let count = 10;
-            countdown();
 
             let countdown = setInterval(() => {
               document.getElementById("timer").innerText = count;
@@ -446,7 +441,7 @@ function detectLocation(e, check) {
                 clearInterval(countdown);
                 window.location.href = `https://dcrm.fincity.com/?device-type=${deviceType}&token${responseData?.token}`;
               }
-            }, 10000);
+            }, 1000);
           })
           .catch((err) => {});
       },
