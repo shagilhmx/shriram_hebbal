@@ -500,10 +500,10 @@ function resendOtp(e, check) {
 function verfiyOtp(e, check) {
   e.stopPropagation();
   let otp =
-    document.querySelector(check ? "#1st_" : "#_1st_")?.value +
-    document.querySelector(check ? "#2nd_" : "#_2nd_")?.value +
-    document.querySelector(check ? "#3rd_" : "#_3rd_")?.value +
-    document.querySelector(check ? "#4th_" : "#_4th_")?.value;
+    document.querySelector(check ? "#_1st" : "#_1st_")?.value +
+    document.querySelector(check ? "#_2nd" : "#_2nd_")?.value +
+    document.querySelector(check ? "#_3rd" : "#_3rd_")?.value +
+    document.querySelector(check ? "#_4th" : "#_4th_")?.value;
   let body = {
     token: responseData?.data?.token,
     otp: otp,
