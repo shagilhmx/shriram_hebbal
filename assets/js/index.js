@@ -440,10 +440,8 @@ function detectLocation(e, check) {
 
             let countdown = setInterval(() => {
               document.querySelector(
-                check
-                  ? "#locationButton #timer #handRight"
-                  : "#locationButton1 #timer1 #handRight",
-              ).innerHTML = `<span>${count}</span>`;
+                check ? "#locationButton #timer" : "#locationButton1 #timer1",
+              ).innerHTML += `<span style="display:inline-block">${count}</span>`;
               count--;
 
               if (count === 0) {
@@ -459,8 +457,9 @@ function detectLocation(e, check) {
         // There was an error retrieving the location
         document.getElementById(check ? "detectText" : "detectText").innerText =
           "Failed to fetch Location!";
-        document.getElementById(check ? "loading" : "loading1").style.display =
-          "none";
+        document.querySelector(
+          check ? "#locationButton #loading" : "#locationButton1 #loading1",
+        ).style.display = "none";
       },
       optionLocation,
     );
