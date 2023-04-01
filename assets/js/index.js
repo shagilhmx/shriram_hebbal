@@ -443,7 +443,7 @@ function detectLocation(e, check) {
                 check
                   ? "#locationButton #timer #handRight"
                   : "#locationButton1 #timer1 #handRight",
-              ).innerText += count;
+              ).innerHTML = `<span>${count}</span>`;
               count--;
 
               if (count === 0) {
