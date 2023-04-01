@@ -479,7 +479,7 @@ function backMain(e, check) {
     "Please Enter the Verification Code sent to";
   document.getElementById(
     check ? "enquirBbutton1" : "enquirBbutton2",
-  ).style.pointerEvents = "block";
+  ).style.pointerEvents = "all";
 }
 
 function resendOtp(e, check) {
