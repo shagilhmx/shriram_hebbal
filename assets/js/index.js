@@ -434,16 +434,22 @@ function detectLocation(e, check) {
 
             let count = 5;
 
+            document.querySelector(
+              check ? "#locationButton #timer" : "#locationButton1 #timer1",
+            ).innerHTML = `<lottie-player class='loading' id='loading' src='assets/images/handRight.json' background='transparent' speed='1' autoplay loop style='width: 50px; height: 50px'></lottie-player>`;
+
             let countdown = setInterval(() => {
               document.querySelector(
-                check ? "#locationButton #timer" : "#locationButton1 #timer1",
-              ).innerText = count;
+                check
+                  ? "#locationButton #timer #loading"
+                  : "#locationButton1 #timer1 #loading",
+              ).innerText += count;
               count--;
 
               if (count === 0) {
                 let deviceType = getDeviceType();
                 clearInterval(countdown);
-                window.location.href = `http://localhost:8000/?&user=consumer&device-type=${deviceType}&token=${responseData?.data?.token}`;
+                window.location.href = `http://localhost:8000/?&user=consumer&device-type=${deviceType}&token=${responseData?.data?.token}?isLandingPage=true`;
               }
             }, 1000);
           })
