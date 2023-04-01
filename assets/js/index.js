@@ -499,12 +499,17 @@ function resendOtp(e, check) {
 
 function verfiyOtp(e, check) {
   e.stopPropagation();
-  delete responseData?.data?.locationDto;
+  let otp =
+    document.querySelector(check ? "1st_" : "_1st_")?.value +
+    document.querySelector(check ? "2nd_" : "_2nd_")?.value +
+    document.querySelector(check ? "3rd_" : "_3rd_")?.value +
+    document.querySelector(check ? "4th_" : "_4th_")?.value;
+  let body = {
+    token: responseData?.data?.token,
+    otp: otp,
+  };
   axios
-    .post(
-      `http:///api-dcrm-stage.fincity.in/open/opportunity/verify`,
-      responseData?.data,
-    )
+    .post(`http:///api-dcrm-stage.fincity.in/open/opportunity/verify`, body)
     .then((res) => {
       document.getElementById(
         check ? "otpVerification" : "otpVerification1",
