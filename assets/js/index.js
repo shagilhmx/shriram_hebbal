@@ -430,7 +430,7 @@ function detectLocation(e, check) {
             ).style.pointerEvents = "none";
             document.querySelector(
               check ? "#locationButton #timer" : "#locationButton1 #timer1",
-            ).style.display = "block";
+            ).style.display = "flex";
 
             let count = 5;
 
@@ -441,7 +441,7 @@ function detectLocation(e, check) {
             let countdown = setInterval(() => {
               document.querySelector(
                 check ? "#locationButton #timer" : "#locationButton1 #timer1",
-              ).innerHTML += `<span style="display:inline-block">${count}</span>`;
+              ).innerHTML += `<span>${count}</span>`;
               count--;
 
               if (count === 0) {

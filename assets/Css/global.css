@@ -1356,6 +1356,7 @@ input[type='checkbox'] {
 
 #timer {
     display: none;
+    gap: 4px;
 }
 
 .headerModal {
