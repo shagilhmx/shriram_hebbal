@@ -203,7 +203,7 @@ function closeModal() {
 let responseData;
 function openApi(event, on) {
   event.stopPropagation();
-  let in_ = document.getElementById("enquirBbutton1");
+  let in_ = document.getElementById(on ? "enquirBbutton2" : "enquirBbutton1");
   in_.style.pointerEvents = "none";
   in_.innerHTML +=
     "<lottie-player class='loading' id='loading' src='assets/images/loading.json' background='transparent' speed='1' autoplay loop style='width: 50px; height: 50px'></lottie-player>";
@@ -430,18 +430,14 @@ function detectLocation(e, check) {
             ).style.pointerEvents = "none";
             document.querySelector(
               check ? "#locationButton #timer" : "#locationButton1 #timer1",
-            ).style.display = "flex";
+            ).style.display = "block";
 
             let count = 5;
-
-            document.querySelector(
-              check ? "#locationButton #timer" : "#locationButton1 #timer1",
-            ).innerHTML = `<lottie-player class='handRight' id='handRight' src='assets/images/handRight.json' background='transparent' speed='1' autoplay loop style='width: 50px; height: 50px'></lottie-player>`;
 
             let countdown = setInterval(() => {
               document.querySelector(
                 check ? "#locationButton #timer" : "#locationButton1 #timer1",
-              ).innerHTML += `<span>${count}</span>`;
+              ).innerText = count;
               count--;
 
               if (count === 0) {
@@ -457,9 +453,8 @@ function detectLocation(e, check) {
         // There was an error retrieving the location
         document.getElementById(check ? "detectText" : "detectText").innerText =
           "Failed to fetch Location!";
-        document.querySelector(
-          check ? "#locationButton #loading" : "#locationButton1 #loading1",
-        ).style.display = "none";
+        document.getElementById(check ? "loading" : "loading1").style.display =
+          "none";
       },
       optionLocation,
     );
@@ -482,6 +477,9 @@ function backMain(e, check) {
   ).style.display = "flex";
   document.querySelector(check ? "#numberText" : "#numberText1").innerHTML =
     "Please Enter the Verification Code sent to";
+  document.getElementById(
+    check ? "enquirBbutton1" : "enquirBbutton2",
+  ).style.pointerEvents = "none";
 }
 
 function resendOtp(e, check) {
