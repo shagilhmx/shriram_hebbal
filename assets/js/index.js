@@ -393,7 +393,7 @@ const optionLocation = {
 function detectLocation(e, check) {
   document
     .querySelector(
-      check ? "#locationButton #detect" : "#locationButton1 #detect",
+      check ? "#locationButton #detect" : "#locationButton1 #detect1",
     )
     .remove();
 
@@ -451,8 +451,9 @@ function detectLocation(e, check) {
       },
       (error) => {
         // There was an error retrieving the location
-        document.getElementById(check ? "detectText" : "detectText").innerText =
-          "Failed to fetch Location!";
+        document.getElementById(
+          check ? "detectText" : "detectText1",
+        ).innerText = "Failed to fetch Location!";
         document.getElementById(check ? "loading" : "loading1").style.display =
           "none";
       },
