@@ -436,13 +436,13 @@ function detectLocation(e, check) {
 
             document.querySelector(
               check ? "#locationButton #timer" : "#locationButton1 #timer1",
-            ).innerHTML = `<lottie-player class='loading' id='loading' src='assets/images/handRight.json' background='transparent' speed='1' autoplay loop style='width: 50px; height: 50px'></lottie-player>`;
+            ).innerHTML = `<lottie-player class='handRight' id='handRight' src='assets/images/handRight.json' background='transparent' speed='1' autoplay loop style='width: 50px; height: 50px'></lottie-player>`;
 
             let countdown = setInterval(() => {
               document.querySelector(
                 check
-                  ? "#locationButton #timer #loading"
-                  : "#locationButton1 #timer1 #loading",
+                  ? "#locationButton #timer #handRight"
+                  : "#locationButton1 #timer1 #handRight",
               ).innerText += count;
               count--;
 
