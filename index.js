@@ -478,8 +478,8 @@ function backMain(e, check) {
   document.querySelector(check ? "#numberText" : "#numberText1").innerHTML =
     "Please Enter the Verification Code sent to";
   document.getElementById(
-    check ? "enquirBbutton2" : "enquirBbutton1",
-  ).style.pointerEvents = "block";
+    check ? "enquirBbutton1" : "enquirBbutton2",
+  ).style.pointerEvents = "all";
 }
 
 function resendOtp(e, check) {
