@@ -443,7 +443,7 @@ function detectLocation(e, check) {
               if (count === 0) {
                 let deviceType = getDeviceType();
                 clearInterval(countdown);
-                window.location.href = `http://localhost:8000/?&user=consumer&device-type=${deviceType}&token=${responseData?.data?.token}?isLandingPage=true`;
+                window.location.href = `http://localhost:8000/?&user=consumer&device-type=${deviceType}&token=${responseData?.data?.token}&isLandingPage=true`;
               }
             }, 1000);
           })
