@@ -187,7 +187,7 @@ window.addEventListener(
         blurElem.style.filter = "blur(5px)";
         blurElem.style.pointerEvents = "none";
       });
-    }, 10000),
+    }, 5000),
   false,
 );
 
@@ -226,7 +226,7 @@ function openApi(event, on) {
     utm_medium = searchParams.get("utm_medium");
     utm_content = searchParams.get("utm_content");
     utm_terms = searchParams.get("utm_terms");
-    const isOtp = new URLSearchParams(new URL(url).search).get("isOtp");
+    const isOtp = new URLSearchParams(new URL(url).search).get("isOTP");
     const check =
       utm_campaign || utm_source || utm_content || utm_medium || utm_terms;
     let body = {
@@ -253,7 +253,7 @@ function openApi(event, on) {
       }),
     };
     axios
-      .post("http:///api-dcrm-stage.fincity.in/open/opportunity", body)
+      .post("http://api-dcrm-dev.fincity.in/open/opportunity", body)
       .then((res) => {
         if (isOtp) {
           if (on) {
@@ -290,6 +290,10 @@ function openApi(event, on) {
         }
       })
       .catch((err) => {
+        let in_ = document.getElementById(
+          on ? "enquirBbutton2" : "enquirBbutton1",
+        );
+        in_.style.pointerEvents = "all";
         document.getElementById("error").style.display = "block";
         document.getElementById("error").innerHTML = err?.message;
         document.getElementById("error").style.fontSize = "12px";
@@ -414,10 +418,7 @@ function detectLocation(e, check) {
         };
 
         axios
-          .post(
-            `http:///api-dcrm-stage.fincity.in/open/opportunity/verify`,
-            body,
-          )
+          .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
           .then((res) => {
             document.getElementById(
               check ? "detectText" : "detectText1",
@@ -431,21 +432,6 @@ function detectLocation(e, check) {
             document.querySelector(
               check ? "#locationButton #timer" : "#locationButton1 #timer1",
             ).style.display = "block";
-
-            let count = 5;
-
-            let countdown = setInterval(() => {
-              document.querySelector(
-                check ? "#locationButton #timer" : "#locationButton1 #timer1",
-              ).innerText = count;
-              count--;
-
-              if (count === 0) {
-                let deviceType = getDeviceType();
-                clearInterval(countdown);
-                window.location.href = `http://localhost:8000/?&user=consumer&device-type=${deviceType}&token=${responseData?.data?.token}&isLandingPage=true`;
-              }
-            }, 1000);
           })
           .catch((err) => {});
       },
@@ -487,7 +473,7 @@ function resendOtp(e, check) {
   e.stopPropagation();
   axios
     .post(
-      `http:///api-dcrm-stage.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`,
+      `http://api-dcrm-dev.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`,
     )
     .then((res) => {
       document.querySelector(check ? "#resendOtp" : "#resendOtp1").innerText =
@@ -509,13 +495,24 @@ function verfiyOtp(e, check) {
     otp: otp,
   };
   axios
-    .post(`http:///api-dcrm-stage.fincity.in/open/opportunity/verify`, body)
+    .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
     .then((res) => {
       document.getElementById(
         check ? "otpVerification" : "otpVerification1",
       ).style.display = "none";
       document.getElementById(check ? "location" : "location1").style.display =
         "flex";
+      let count = 10;
+
+      let countdown = setInterval(() => {
+        count--;
+
+        if (count === 0) {
+          let deviceType = getDeviceType();
+          clearInterval(countdown);
+          window.location.href = `https://dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
+        }
+      }, 1000);
     })
     .catch((err) => {});
 }
