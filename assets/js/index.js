@@ -187,7 +187,7 @@ window.addEventListener(
         blurElem.style.filter = "blur(5px)";
         blurElem.style.pointerEvents = "none";
       });
-    }, 5000),
+    }, 2000),
   false,
 );
 
@@ -253,7 +253,7 @@ function openApi(event, on) {
       }),
     };
     axios
-      .post("http://api-dcrm-dev.fincity.in/open/opportunity", body)
+      .post("http://dcrm-stage.fincity.in/open/opportunity", body)
       .then((res) => {
         if (isOtp) {
           if (on) {
@@ -411,14 +411,14 @@ function detectLocation(e, check) {
         delete responseData?.data?.otp;
         let body = {
           token: responseData?.data?.token,
-          locationDto: {
+          location: {
             latitude: position?.coords?.latitude,
             longitude: position?.coords?.longitude,
           },
         };
 
         axios
-          .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
+          .post(`http://dcrm-stage.fincity.in/open/opportunity/verify`, body)
           .then((res) => {
             document.getElementById(
               check ? "detectText" : "detectText1",
@@ -473,7 +473,7 @@ function resendOtp(e, check) {
   e.stopPropagation();
   axios
     .post(
-      `http://api-dcrm-dev.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`,
+      `http://dcrm-stage.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`,
     )
     .then((res) => {
       document.querySelector(check ? "#resendOtp" : "#resendOtp1").innerText =
@@ -495,7 +495,7 @@ function verfiyOtp(e, check) {
     otp: otp,
   };
   axios
-    .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
+    .post(`http://dcrm-stage.fincity.in/open/opportunity/verify`, body)
     .then((res) => {
       document.getElementById(
         check ? "otpVerification" : "otpVerification1",
@@ -510,7 +510,7 @@ function verfiyOtp(e, check) {
         if (count === 0) {
           let deviceType = getDeviceType();
           clearInterval(countdown);
-          window.location.href = `https://dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
+          window.location.href = `https://dcrm-stage.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
         }
       }, 1000);
     })
