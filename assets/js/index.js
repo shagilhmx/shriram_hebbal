@@ -412,8 +412,8 @@ function detectLocation(e, check) {
         let body = {
           token: responseData?.data?.token,
           location: {
-            latitude: position?.coords?.latitude,
-            longitude: position?.coords?.longitude,
+            lat: position?.coords?.latitude,
+            lng: position?.coords?.longitude,
           },
         };
 
