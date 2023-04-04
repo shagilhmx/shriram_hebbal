@@ -1399,6 +1399,11 @@ input[type="checkbox"] {
   margin-left: 4px;
 }
 
+#redirect a:hover {
+  text-decoration: underline;
+  color: #298ec7;
+}
+
 @media (max-width: 768px) {
   #outer {
     display: none;
