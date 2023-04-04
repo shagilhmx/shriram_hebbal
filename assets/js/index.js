@@ -513,7 +513,7 @@ function verfiyOtp(e, check) {
         if (count === 0) {
           let deviceType = getDeviceType();
           clearInterval(countdown);
-          window.location.href = `http://api-dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
+          window.location.href = `http://api-dcrm-stage.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
         }
       }, 1000);
     })
