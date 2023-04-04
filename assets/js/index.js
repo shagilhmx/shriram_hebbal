@@ -507,9 +507,11 @@ function verfiyOtp(e, check) {
         "flex";
       let count = 10;
 
+      document.getElementById("redirect").style.display = "block";
       let countdown = setInterval(() => {
         count--;
 
+        document.getElementById("timer").innerText = count;
         if (count === 0) {
           let deviceType = getDeviceType();
           clearInterval(countdown);
