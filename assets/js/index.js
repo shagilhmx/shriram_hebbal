@@ -253,7 +253,7 @@ function openApi(event, on) {
       }),
     };
     axios
-      .post("https://dcrm-dev.fincity.in/open/opportunity", body)
+      .post("http://api-dcrm-dev.fincity.in/open/opportunity", body)
       .then((res) => {
         if (isOtp) {
           if (on) {
@@ -418,7 +418,7 @@ function detectLocation(e, check) {
         };
 
         axios
-          .post(`https://dcrm-dev.fincity.in/open/opportunity/verify`, body)
+          .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
           .then((res) => {
             document.getElementById(
               check ? "detectText" : "detectText1"
@@ -473,7 +473,7 @@ function resendOtp(e, check) {
   e.stopPropagation();
   axios
     .post(
-      `https://dcrm-dev.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`
+      `http://api-dcrm-dev.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`
     )
     .then((res) => {
       document.querySelector(check ? "#resendOtp" : "#resendOtp1").innerText =
@@ -495,7 +495,7 @@ function verfiyOtp(e, check) {
     otp: otp,
   };
   axios
-    .post(`https://dcrm-dev.fincity.in/open/opportunity/verify`, body)
+    .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
     .then((res) => {
       document.getElementById(
         check ? "otpVerification" : "otpVerification1"
@@ -510,7 +510,7 @@ function verfiyOtp(e, check) {
         if (count === 0) {
           let deviceType = getDeviceType();
           clearInterval(countdown);
-          window.location.href = `https://dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
+          window.location.href = `http://api-dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
         }
       }, 1000);
     })
