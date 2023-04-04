@@ -502,13 +502,19 @@ function verfiyOtp(e, check) {
       ).style.display = "none";
       document.getElementById(check ? "location" : "location1").style.display =
         "flex";
-      let count = 10;
+      let count = 5;
 
       document.getElementById("redirect").style.display = "block";
+      document
+        .querySelector("#redirect a")
+        .setAttribute(
+          "href",
+          `http://dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`
+        );
       let countdown = setInterval(() => {
         count--;
 
-        document.getElementById("timer").innerText = count;
+        document.querySelector("#redirect #timer").innerText = count;
         if (count === 0) {
           let deviceType = getDeviceType();
           clearInterval(countdown);
