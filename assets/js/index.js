@@ -113,7 +113,7 @@ function readLess2() {
 
 function checkInputs(inputs, submitButton, checkbox) {
   const anyEmpty = inputs.some((input) => input.value.trim() === "");
-  checkbox?.checked
+  checkbox?.checked != undefined
     ? (submitButton.disabled = anyEmpty || !checkbox?.checked)
     : (submitButton.disabled = anyEmpty);
 }
