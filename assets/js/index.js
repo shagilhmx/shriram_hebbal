@@ -136,9 +136,14 @@ window.addEventListener(
     let otpForm = document.querySelectorAll(".inutContainer input");
     checkInputs(
       [...otpForm].splice(0, 4),
-      document.getElementById("otpBbutton1")
+      document.getElementById("otpBbutton1"),
+      true
     );
-    checkInputs([...otpForm].splice(4), document.getElementById("otpBbutton2"));
+    checkInputs(
+      [...otpForm].splice(4),
+      document.getElementById("otpBbutton2"),
+      true
+    );
   },
   false
 );
@@ -164,9 +169,14 @@ window.addEventListener(
     let otpForm = document.querySelectorAll(".inutContainer input");
     checkInputs(
       [...otpForm].splice(0, 4),
-      document.getElementById("otpBbutton1")
+      document.getElementById("otpBbutton1"),
+      true
     );
-    checkInputs([...otpForm].splice(4), document.getElementById("otpBbutton2"));
+    checkInputs(
+      [...otpForm].splice(4),
+      document.getElementById("otpBbutton2"),
+      true
+    );
   },
   false
 );
