@@ -113,7 +113,9 @@ function readLess2() {
 
 function checkInputs(inputs, submitButton, checkbox) {
   const anyEmpty = inputs.some((input) => input.value.trim() === "");
-  submitButton.disabled = anyEmpty || !checkbox?.checked;
+  checkbox?.checked
+    ? (submitButton.disabled = anyEmpty || !checkbox?.checked)
+    : (submitButton.disabled = anyEmpty);
 }
 
 window.addEventListener(
@@ -136,14 +138,9 @@ window.addEventListener(
     let otpForm = document.querySelectorAll(".inutContainer input");
     checkInputs(
       [...otpForm].splice(0, 4),
-      document.getElementById("otpBbutton1"),
-      true
+      document.getElementById("otpBbutton1")
     );
-    checkInputs(
-      [...otpForm].splice(4),
-      document.getElementById("otpBbutton2"),
-      true
-    );
+    checkInputs([...otpForm].splice(4), document.getElementById("otpBbutton2"));
   },
   false
 );
@@ -169,14 +166,9 @@ window.addEventListener(
     let otpForm = document.querySelectorAll(".inutContainer input");
     checkInputs(
       [...otpForm].splice(0, 4),
-      document.getElementById("otpBbutton1"),
-      true
+      document.getElementById("otpBbutton1")
     );
-    checkInputs(
-      [...otpForm].splice(4),
-      document.getElementById("otpBbutton2"),
-      true
-    );
+    checkInputs([...otpForm].splice(4), document.getElementById("otpBbutton2"));
   },
   false
 );
