@@ -111,9 +111,9 @@ function readLess2() {
   document.getElementById("readLess2").style.display = "none";
 }
 
-function checkInputs(inputs, submitButton) {
+function checkInputs(inputs, submitButton, checkbox) {
   const anyEmpty = inputs.some((input) => input.value.trim() === "");
-  submitButton.disabled = anyEmpty;
+  submitButton.disabled = anyEmpty || !checkbox?.checked;
 }
 
 window.addEventListener(
@@ -122,11 +122,17 @@ window.addEventListener(
     let form = document.querySelectorAll(
       ".enquirySubMain input:not(input[type='checkbox'])"
     );
+    let checkbox = document.querySelector("input[type=checkbox]");
     checkInputs(
       [...form].splice(0, 3),
-      document.getElementById("enquirBbutton1")
+      document.getElementById("enquirBbutton1"),
+      checkbox[0]
     );
-    checkInputs([...form].splice(3), document.getElementById("enquirBbutton2"));
+    checkInputs(
+      [...form].splice(3),
+      document.getElementById("enquirBbutton2"),
+      checkbox[1]
+    );
     let otpForm = document.querySelectorAll(".inutContainer input");
     checkInputs(
       [...otpForm].splice(0, 4),
@@ -143,11 +149,17 @@ window.addEventListener(
     let form = document.querySelectorAll(
       ".enquirySubMain input:not(input[type='checkbox'])"
     );
+    let checkbox = document.querySelector("input[type=checkbox]");
     checkInputs(
       [...form].splice(0, 3),
-      document.getElementById("enquirBbutton1")
+      document.getElementById("enquirBbutton1"),
+      checkbox[0]
     );
-    checkInputs([...form].splice(3), document.getElementById("enquirBbutton2"));
+    checkInputs(
+      [...form].splice(3),
+      document.getElementById("enquirBbutton2"),
+      checkbox[1]
+    );
 
     let otpForm = document.querySelectorAll(".inutContainer input");
     checkInputs(
@@ -401,8 +413,9 @@ function detectLocation(e, check) {
     )
     .remove();
 
-  document.querySelector(check ? "#loading" : "#loading1").style.display =
-    "block";
+  document.querySelector(
+    check ? "#locationButton #loading" : "#locationButton1 #loading1"
+  ).style.display = "block";
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
