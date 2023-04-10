@@ -122,7 +122,7 @@ window.addEventListener(
     let form = document.querySelectorAll(
       ".enquirySubMain input:not(input[type='checkbox'])"
     );
-    let checkbox = document.querySelector("input[type=checkbox]");
+    let checkbox = document.querySelectorAll("input[type=checkbox]");
     checkInputs(
       [...form].splice(0, 3),
       document.getElementById("enquirBbutton1"),
@@ -149,7 +149,7 @@ window.addEventListener(
     let form = document.querySelectorAll(
       ".enquirySubMain input:not(input[type='checkbox'])"
     );
-    let checkbox = document.querySelector("input[type=checkbox]");
+    let checkbox = document.querySelectorAll("input[type=checkbox]");
     checkInputs(
       [...form].splice(0, 3),
       document.getElementById("enquirBbutton1"),
