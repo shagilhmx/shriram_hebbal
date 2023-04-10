@@ -113,7 +113,7 @@ function readLess2() {
 
 function checkInputs(inputs, submitButton, checkbox) {
   const anyEmpty = inputs.some((input) => input.value.trim() === "");
-  checkbox?.checked != undefined
+  checkbox != undefined
     ? (submitButton.disabled = anyEmpty || !checkbox?.checked)
     : (submitButton.disabled = anyEmpty);
 }
@@ -122,55 +122,55 @@ window.addEventListener(
   "load",
   (event) => {
     let form = document.querySelectorAll(
-      ".enquirySubMain input:not(input[type='checkbox'])"
+      ".enquirySubMain input:not(input[type='checkbox'])",
     );
     let checkbox = document.querySelectorAll("input[type=checkbox]");
     checkInputs(
       [...form].splice(0, 3),
       document.getElementById("enquirBbutton1"),
-      checkbox[0]
+      checkbox[0],
     );
     checkInputs(
       [...form].splice(3),
       document.getElementById("enquirBbutton2"),
-      checkbox[1]
+      checkbox[1],
     );
     let otpForm = document.querySelectorAll(".inutContainer input");
     checkInputs(
       [...otpForm].splice(0, 4),
-      document.getElementById("otpBbutton1")
+      document.getElementById("otpBbutton1"),
     );
     checkInputs([...otpForm].splice(4), document.getElementById("otpBbutton2"));
   },
-  false
+  false,
 );
 
 window.addEventListener(
   "input",
   (event) => {
     let form = document.querySelectorAll(
-      ".enquirySubMain input:not(input[type='checkbox'])"
+      ".enquirySubMain input:not(input[type='checkbox'])",
     );
     let checkbox = document.querySelectorAll("input[type=checkbox]");
     checkInputs(
       [...form].splice(0, 3),
       document.getElementById("enquirBbutton1"),
-      checkbox[0]
+      checkbox[0],
     );
     checkInputs(
       [...form].splice(3),
       document.getElementById("enquirBbutton2"),
-      checkbox[1]
+      checkbox[1],
     );
 
     let otpForm = document.querySelectorAll(".inutContainer input");
     checkInputs(
       [...otpForm].splice(0, 4),
-      document.getElementById("otpBbutton1")
+      document.getElementById("otpBbutton1"),
     );
     checkInputs([...otpForm].splice(4), document.getElementById("otpBbutton2"));
   },
-  false
+  false,
 );
 
 window.addEventListener(
@@ -188,7 +188,7 @@ window.addEventListener(
       }
     });
   },
-  false
+  false,
 );
 
 window.addEventListener(
@@ -202,7 +202,7 @@ window.addEventListener(
         blurElem.style.pointerEvents = "none";
       });
     }, 2000),
-  false
+  false,
 );
 
 function closeModal() {
@@ -240,7 +240,7 @@ function openApi(event, on) {
     utm_medium = searchParams.get("utm_medium");
     utm_content = searchParams.get("utm_content");
     utm_terms = searchParams.get("utm_terms");
-    const isOtp = new URLSearchParams(new URL(url).search).get("isOTP");
+    const isOtp = searchParams.get("isOTP");
     const check =
       utm_campaign || utm_source || utm_content || utm_medium || utm_terms;
     let body = {
@@ -267,8 +267,9 @@ function openApi(event, on) {
       }),
     };
     axios
-      .post("http://api-dcrm-dev.fincity.in/open/opportunity", body)
+      .post("https://api-dcrm.fincity.com/open/opportunity", body)
       .then((res) => {
+        gtag_report_conversion();
         if (isOtp) {
           if (on) {
             document
@@ -305,7 +306,7 @@ function openApi(event, on) {
       })
       .catch((err) => {
         let in_ = document.getElementById(
-          on ? "enquirBbutton2" : "enquirBbutton1"
+          on ? "enquirBbutton2" : "enquirBbutton1",
         );
         in_.style.pointerEvents = "all";
         document.getElementById("error").style.display = "block";
@@ -360,7 +361,7 @@ window.addEventListener(
       path: "assets/images/lottie1Mobile.json",
     });
   },
-  false
+  false,
 );
 
 const observer = new IntersectionObserver(
@@ -377,7 +378,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.75 }
+  { threshold: 0.75 },
 );
 
 function load() {
@@ -385,8 +386,8 @@ function load() {
   animateValue("count2", 511, false);
   animateValue("count3", 267273, false);
   animateValue("count4", 1.8, true);
-  animateValue("count5", 511, false);
-  animateValue("count6", 267273, false);
+  animateValue("count5", 267273, false);
+  animateValue("count6", 511, false);
 }
 
 function clickEvent(first, last) {
@@ -411,12 +412,12 @@ const optionLocation = {
 function detectLocation(e, check) {
   document
     .querySelector(
-      check ? "#locationButton #detect" : "#locationButton1 #detect1"
+      check ? "#locationButton #detect" : "#locationButton1 #detect1",
     )
     .remove();
 
   document.querySelector(
-    check ? "#locationButton #loading" : "#locationButton1 #loading1"
+    check ? "#locationButton #loading" : "#locationButton1 #loading1",
   ).style.display = "block";
 
   if (navigator.geolocation) {
@@ -432,19 +433,19 @@ function detectLocation(e, check) {
         };
 
         axios
-          .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
+          .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, body)
           .then((res) => {
             document.getElementById(
-              check ? "detectText" : "detectText1"
+              check ? "detectText" : "detectText1",
             ).innerText = "Location Detected";
             document.querySelector(
-              check ? "#locationButton #loading" : "#locationButton1 #loading1"
+              check ? "#locationButton #loading" : "#locationButton1 #loading1",
             ).style.display = "none";
             document.getElementById(
-              check ? "locationButton" : "locationButton1"
+              check ? "locationButton" : "locationButton1",
             ).style.pointerEvents = "none";
             document.querySelector(
-              check ? "#locationButton #timer" : "#locationButton1 #timer1"
+              check ? "#locationButton #timer" : "#locationButton1 #timer1",
             ).style.display = "block";
           })
           .catch((err) => {});
@@ -452,12 +453,12 @@ function detectLocation(e, check) {
       (error) => {
         // There was an error retrieving the location
         document.getElementById(
-          check ? "detectText" : "detectText1"
+          check ? "detectText" : "detectText1",
         ).innerText = "Failed to fetch Location!";
         document.getElementById(check ? "loading" : "loading1").style.display =
           "none";
       },
-      optionLocation
+      optionLocation,
     );
   } else {
     document.getElementById(check ? "loading" : "loading1").style.display =
@@ -471,15 +472,15 @@ function backMain(e, check) {
   e.stopPropagation();
 
   document.getElementById(
-    check ? "otpVerification" : "otpVerification1"
+    check ? "otpVerification" : "otpVerification1",
   ).style.display = "none";
   document.getElementById(
-    check ? "enquirySubMain" : "enquiryMain"
+    check ? "enquirySubMain" : "enquiryMain",
   ).style.display = "flex";
   document.querySelector(check ? "#numberText" : "#numberText1").innerHTML =
     "Please Enter the Verification Code sent to";
   document.getElementById(
-    check ? "enquirBbutton1" : "enquirBbutton2"
+    check ? "enquirBbutton1" : "enquirBbutton2",
   ).style.pointerEvents = "all";
 }
 
@@ -487,7 +488,7 @@ function resendOtp(e, check) {
   e.stopPropagation();
   axios
     .post(
-      `http://api-dcrm-dev.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`
+      `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${responseData?.data?.token}`,
     )
     .then((res) => {
       document.querySelector(check ? "#resendOtp" : "#resendOtp1").innerText =
@@ -509,30 +510,22 @@ function verfiyOtp(e, check) {
     otp: otp,
   };
   axios
-    .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
+    .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, body)
     .then((res) => {
       document.getElementById(
-        check ? "otpVerification" : "otpVerification1"
+        check ? "otpVerification" : "otpVerification1",
       ).style.display = "none";
       document.getElementById(check ? "location" : "location1").style.display =
         "flex";
-      let count = 5;
+      let count = 10;
 
-      document.getElementById("redirect").style.display = "block";
-      document
-        .querySelector("#redirect a")
-        .setAttribute(
-          "href",
-          `http://dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`
-        );
       let countdown = setInterval(() => {
         count--;
 
-        document.querySelector("#redirect #timer").innerText = count;
         if (count === 0) {
           let deviceType = getDeviceType();
           clearInterval(countdown);
-          window.location.href = `http://dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
+          window.location.href = `https://dcrm.fincity.com/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
         }
       }, 1000);
     })

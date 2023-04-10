@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-10852030635"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-10852030635");
+    </script>
+    <!-- Event snippet for Shriram Hebbal 1 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url != "undefined") {
+            window.location = url;
+          }
+        };
+        gtag("event", "conversion", {
+          send_to: "AW-10852030635/X36BCMOu85MYEKux07Yo",
+          event_callback: callback,
+        });
+        return false;
+      }
+    </script>
     <script defer src="assets/js/index.js"></script>
     <link rel="stylesheet" href="assets/Css/global.css" />
     <meta charset="utf-8" />
@@ -41,26 +71,6 @@
         y = l.getElementsByTagName(r)[0];
         y.parentNode.insertBefore(t, y);
       })(window, document, "clarity", "script", "gcz4gaegw3");
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=AW-10852030635"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "AW-10852030635");
-    </script>
-    <!-- Event snippet for Shriram Hebbal One - Submit Lead Form conversion page -->
-    <script>
-      gtag("event", "conversion", {
-        send_to: "AW-10852030635/vcdUCIT0r5UYEKux07Yo",
-      });
     </script>
     <script
       defer
@@ -198,12 +208,11 @@
               <div class="readMoreScroll">
                 <p class="readMore" id="displayMore">
                   I hereby declare that I have read the consent and I appoint
-                  and allow FINCITY to access my credit information and I/We
-                  hereby authorize FINCITY & its affiliates including banking
-                  partners to call or SMS and/or WhatsApp with reference to my
-                  application or in relation to any of FINCITY products,
-                  notwithstanding anything to the contrary that may be contained
-                  anywhere, including any registration for DNC/ NDNC.
+                  and allow FINCITY and its Developer partners to call or SMS
+                  and/or WhatsApp with details regarding this project or any
+                  other projects including new launches from time to time in
+                  future, notwithstanding anything to the contrary that may be
+                  contained anywhere, including any registration for DNC/ NDNC.
                 </p>
                 <span id="readLess2" onclick="readLess2()">Read Less</span>
               </div>
@@ -345,11 +354,7 @@
                 style="width: 50px; height: 50px"
               ></lottie-player>
             </button>
-            <div id="redirect">
-              you will be redirected or click here to redirect - 
-              <a>http://dcrm-dev.fincity.in/?&user=consumer</a>
-              <span id="timer"></span>
-            </div>
+            <div id="redirect"></div>
           </div>
         </div>
       </div>
@@ -1860,12 +1865,11 @@
               <div>
                 <span class="readMore" id="displayMoreTwo">
                   I hereby declare that I have read the consent and I appoint
-                  and allow FINCITY to access my credit information and I/We
-                  hereby authorize FINCITY & its affiliates including banking
-                  partners to call or SMS and/or WhatsApp with reference to my
-                  application or in relation to any of FINCITY products,
-                  notwithstanding anything to the contrary that may be contained
-                  anywhere, including any registration for DNC/ NDNC.
+                  and allow FINCITY and its Developer partners to call or SMS
+                  and/or WhatsApp with details regarding this project or any
+                  other projects including new launches from time to time in
+                  future, notwithstanding anything to the contrary that may be
+                  contained anywhere, including any registration for DNC/ NDNC.
                 </span>
                 <span id="readLess1" onclick="readLess()">Read Less</span>
               </div>
