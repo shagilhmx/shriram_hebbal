@@ -1390,7 +1390,7 @@ input[type="checkbox"] {
 }
 
 .locationButton {
-  animation: zoomin-zoomout 1s infinite;
+  animation: zoomin-zoomout 0.3s infinite;
 }
 
 @keyframes zoomin-zoomout {
