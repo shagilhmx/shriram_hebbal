@@ -517,7 +517,7 @@ function verfiyOtp(e, check) {
       ).style.display = "none";
       document.getElementById(check ? "location" : "location1").style.display =
         "flex";
-      let count = 30;
+      let count = 10;
 
       let countdown = setInterval(() => {
         count--;

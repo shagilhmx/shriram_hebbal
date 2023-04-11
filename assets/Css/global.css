@@ -1390,28 +1390,28 @@ input[type="checkbox"] {
 }
 
 .locationButton {
-  animation: zoomin-zoomout 0.3s infinite;
+  animation: zoomin-zoomout 0.8s infinite;
 }
 
 @keyframes zoomin-zoomout {
   0% {
-    transform: rotate(0deg);
+    transform: scale(1);
   }
 
   25% {
-    transform: rotate(90deg);
+    transform: scale(1.05);
   }
 
   50% {
-    transform: rotate(180deg);
+    transform: scale(1.1);
   }
 
   75% {
-    transform: rotate(270deg);
+    transform: scale(1.05);
   }
 
   100% {
-    transform: rotate(360deg);
+    transform: scale(1);
   }
 }
 
