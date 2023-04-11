@@ -1390,7 +1390,29 @@ input[type="checkbox"] {
 }
 
 .locationButton {
-  animation: tilt-shaking 0.3s infinite;
+  animation: zoomin-zoomout 0.3s infinite;
+}
+
+@keyframes zoomin-zoomout {
+  0% {
+    transform: scale3d(1);
+  }
+
+  25% {
+    transform: scale3d(1.25);
+  }
+
+  50% {
+    transform: scale3d(1.5);
+  }
+
+  75% {
+    transform: scale3d(1.25);
+  }
+
+  100% {
+    transform: scale3d(1);
+  }
 }
 
 @media (max-width: 768px) {
