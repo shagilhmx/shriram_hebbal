@@ -305,39 +305,6 @@ function openApi(event, on) {
         }
       })
       .catch((err) => {
-        if (isOtp) {
-          if (on) {
-            document
-              .querySelector(".enquiry .section5Header")
-              .setAttribute("style", "display: none");
-            document.getElementById("enquiryMain").style.display = "none";
-            document.getElementById("otpVerification1").style.display = "flex";
-            document.querySelector("#numberText1").innerHTML =
-              document.querySelector("#numberText1").innerText +
-              `<strong> +${intl1.getSelectedCountryData()?.dialCode}-${
-                document.getElementById("phone")?.value
-              }</strong>`;
-            responseData = res;
-          } else {
-            document.getElementById("enquirySubMain").style.display = "none";
-            document.getElementById("otpVerification").style.display = "flex";
-            let len =
-              document.querySelector("#phoneNumber")?.parentElement.innerText
-                ?.length;
-            document.getElementById("enquirySubMain").style.display = "none";
-            document.getElementById("otpVerification").style.display = "flex";
-            document.querySelector("#numberText").innerHTML =
-              document.querySelector("#numberText").innerText +
-              `<strong> +${intl.getSelectedCountryData()?.dialCode}-${
-                document.getElementById("phoneNumber")?.value
-              }</strong>`;
-            responseData = res;
-          }
-        } else {
-          setTimeout(() => {
-            window.location.href = "thankyou.html";
-          }, 1000);
-        }
         let in_ = document.getElementById(
           on ? "enquirBbutton2" : "enquirBbutton1"
         );
