@@ -1196,6 +1196,19 @@ input[type="checkbox"] {
   animation-timing-function: ease-out;
 }
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: #919191;
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-size: 12px;
+}
+
 @keyframes paddingAnimation2 {
   from {
     padding: 10px 60px 10px 60px;
@@ -1419,6 +1432,17 @@ input[type="checkbox"] {
   #outer {
     display: none;
   }
+
+  .footer {
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 20px;
+    font-size: 10px;
+}
+
+.footer p {
+    margin: 0px;
+}
 
   #outer1 {
     display: block;
